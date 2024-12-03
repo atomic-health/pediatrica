@@ -36,7 +36,7 @@ if ( ! function_exists( 'genesis_block_theme_setup' ) ) :
 		/**
 		 * Add styles to post editor.
 		 */
-		add_editor_style( array( genesis_block_theme_fonts_url(), 'style-editor.css' ) );
+		add_editor_style( array( genesis_block_theme_fonts_url(), 'style-editor.css', 'style.css' ) );
 
 		/*
 		* Make theme available for translation.

@@ -1,0 +1,144 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"layout": {
+			"contentSize": "1366px",
+			"wideSize": "100%",
+			"allowCustomContentAndWideSize": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"units": ["px", "vh", "vw", "%"]
+		},
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"color": {
+			"palette": [
+				{
+					"name": "Transparent",
+					"slug": "transparent",
+					"color": "transparent"
+				},
+				{
+					"name": "White",
+					"slug": "white",
+					"color": "#ffffff"
+				},
+				{
+					"name": "Black",
+					"slug": "black",
+					"color": "#000000"
+				},
+				{
+					"name": "Light Gray",
+					"slug": "light-gray",
+					"color": "#FCFAF2"
+				},
+				{
+					"name": "Cyan",
+					"slug": "cyan",
+					"color": "#00667C"
+				},
+				{
+					"name": "Blue",
+					"slug": "blue",
+					"color": "#293F76"
+				},
+				{
+					"name": "Purple",
+					"slug": "purple",
+					"color": "#8B3B70"
+				},
+				{
+					"name": "Yellow",
+					"slug": "yellow",
+					"color": "#EBA607"
+				}
+			],
+			"defaultPalette": false,
+			"defaultGradients": false
+		},
+		"typography": {
+			"lineHeight": true,
+			"fontFamilies": [
+				{
+					"fontFamily": "'PPNeueMontreal', sans-serif",
+					"name": "PP Neue Montreal",
+					"slug": "pp-neue-montreal"
+				},
+				{
+					"fontFamily": "'TestMartinaPlantijn', serif",
+					"name": "Martina Plantijn",
+					"slug": "martina-plantijn"
+				},
+				{
+					"fontFamily": "'EuclidCircularBTrial', sans-serif",
+					"name": "Euclid Circular",
+					"slug": "euclid-circular"
+				}
+			]
+		},
+		"shadow": {
+			"defaultPresets": false,
+			"presets": [
+				{
+					"name": "Brown",
+					"slug": "brown",
+					"shadow": "0px 4px 208.5px 0px rgba(218, 94, 71, 0.12)"
+				},
+				{
+					"name": "Gray",
+					"slug": "gray",
+					"shadow": "0px 4px 64px 0px rgba(37, 37, 37, 0.05)"
+				},
+				{
+					"name": "Pill",
+					"slug": "pill",
+					"shadow": "0px 3.849px 27.731px 0px rgba(0, 0, 0, 0.08)"
+				},
+				{
+					"name": "Card",
+					"slug": "card",
+					"shadow": "0px 4px 94px 0px rgba(0, 0, 0, 0.05)"
+				},
+				{
+					"name": "Blue",
+					"slug": "blue",
+					"shadow": "0px 4px 33.4px 0px rgba(38, 178, 191, 0.10)"
+				},
+				{
+					"name": "Dark",
+					"slug": "dark",
+					"shadow": "0px 3.248px 67.288px rgba(0, 0, 0, 0.12)"
+				}
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/heading": {
+				"color": {
+					"text": "var(--wp--preset--color--dark-gray)"
+				}
+			},
+			"core/paragraph": {
+				"color": {
+					"text": "var(--wp--preset--color--gray)"
+				}
+			}
+		},
+		"elements": {
+			"link": {
+				"color": {
+					"text": "var(--wp--preset--color--purple)"
+				}
+			}
+		}
+	}
+}

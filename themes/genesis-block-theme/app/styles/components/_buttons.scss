@@ -1,0 +1,131 @@
+////
+/// Buttons
+/// @group components
+/// @author Damián Muti
+////
+
+
+///
+$c-button-text-color: white !default;
+$c-button-padding: #{toem(19px)} #{toem(30px)};
+$c-button-background: $suit-color--blue;
+
+/// General styles for buttons. There are also a couple of modifier classes to handle smaller and bigger styles for the buttons.
+/// @example markup - Regular size buttons
+///   <button class="button"></button>
+/// @example markup - Small size buttons
+///   <button class="button button--small"></button>
+/// @example markup - Large size buttons
+///   <button class="button button--large"></button>
+///
+
+@mixin c-button() {
+  .btn,
+  .wp-block-button   {
+    appearance: none;
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    padding: $c-button-padding;
+    border: 2px solid $c-button-background;
+    border-radius: 9999px;
+    line-height: 1; // Normalize height
+    font-family: $suit-font-family--primary;
+    font-size: toem(14px);
+    font-weight: 500;
+    color: $c-button-text-color;
+    text-align: center;
+    text-decoration: none;
+    background-color: $c-button-background;
+    transition: all $suit-transition-duration $suit-transition-timing;
+
+    &:has(.icon) {
+      display: flex;
+      align-items: center;
+      padding-block: toem(10px); 
+      padding-inline: toem(30px) 10px;
+
+      &:hover {
+        .icon {
+          transform: translateX(2px);
+        }
+      }
+    }
+
+    .icon {
+      display: grid;
+      place-content: center;
+      width: 28px;
+      height: 28px;
+      margin-left: 10px;
+      transition: transform .25s ease;
+
+      &--rounded {
+        border-radius: 100%;
+      }
+
+      &--white {
+        background-color: white;
+      }
+    }
+
+    // &:hover {
+    //   background-position: 0 100%;
+    // }
+
+    &:has(.wp-element-button) {
+      padding: 3px;
+      background-color: transparent;
+      border-width: 0;
+
+      a,
+      .rich-text {
+        padding: #{toem(18px)} #{toem(80px)} #{toem(18px)} #{toem(45px)};
+        background-color: $suit-color-lightgray !important;
+        color: $suit-color--blue !important;
+
+        &::after {
+          content: url(./images/arrow.svg);
+          position: absolute;
+          padding-left: 13px;
+          transition: transform .25s ease;
+        }
+
+        &:hover {
+          &::after {
+            transform: translateX(3px);
+          }
+        }
+      }
+    }
+
+    .has-purple-background-color {
+      &:has(.wp-element-button) {
+        a,
+        .rich-text {
+          background-color: $suit-color--purple;
+          color: white
+        }
+      }
+    }
+
+    &--outline {
+      background-color: transparent;
+      color: $c-button-background;
+    }
+
+    &--multicolor {
+      font-size: toem(16px);
+      position: relative;
+      background: conic-gradient(
+          $suit-color--cyan 0% 20%,
+          $suit-color--purple 20% 35%,
+          $suit-color--yellow 35% 68%,
+          $suit-color--purple 68% 75%,
+          $suit-color--cyan 75% 100%
+        ) !important;
+    }
+  }
+}
+
+@include c-button();

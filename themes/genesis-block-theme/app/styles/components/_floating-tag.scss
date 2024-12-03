@@ -1,0 +1,33 @@
+.floating-tag {
+  position: absolute;
+  padding: 3px 5px;
+  border-radius: 3px 6px;
+  box-shadow: 0 5px 17px 0 rgba(#000, .2);
+  transform: skew(-45deg);
+  cursor: default;
+  opacity: 0;
+
+  .block {
+    padding: 3px 15px 4px;
+    background-color: white;
+    transform: skew(0);
+  }
+
+  span {
+    display: inline-block;
+    transform: skew(45deg);
+    font-weight: 500;
+  }
+
+  &--green {
+    background: linear-gradient(15deg, #F7FEED 0%, #BAE123 50%, #F3FEEB 100%);
+  }
+
+  &--lightblue {
+    background: linear-gradient(15deg, #F7FEED 0%, #77DFFC 50%, #F3FEEB 100%);
+  }
+
+  &--orange {
+    background: linear-gradient(15deg, #F7FEED 0%, #FFBF1B 50%, #F3FEEB 100%);
+  }
+}

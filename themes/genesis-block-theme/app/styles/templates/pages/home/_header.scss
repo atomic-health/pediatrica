@@ -1,0 +1,18 @@
+.home__hero {
+  min-height: 770px;
+
+  > .wp-block-cover {
+    max-width: unset;
+    min-height: 770px;
+  }
+
+  h1 {
+    font-size: 74px;
+
+    + p {
+      margin-block: 40px;
+      padding-right: 45vw;
+      line-height: 1.7;
+    }
+  }
+}

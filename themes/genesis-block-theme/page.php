@@ -1,26 +1,19 @@
 <?php
-/**
- * The template for displaying default pages.
- *
- * @package Genesis Block Theme
- */
+// Ensure WordPress environment is loaded before executing the template
+if ( !defined('ABSPATH') ) exit;
 
-get_header(); ?>
+get_header(); // Include header.php if it exists
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+if ( have_posts() ) :
+    while ( have_posts() ) : the_post();
+        // Display the content of the post
+        the_content();
+    endwhile;
+else :
+    // If no posts are found, display a message
+    echo '<p>No content found</p>';
+endif;
 
-			<?php
-			while ( have_posts() ) :
-				the_post();
 
-				// Page content template.
-				get_template_part( 'template-parts/content-page' );
 
-			endwhile;
-			?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-	<?php get_footer(); ?>
+ get_footer(); // Include footer.php if it exists

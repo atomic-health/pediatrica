@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "icon-font";
+  src: url('../fonts/icon-font.eot');
+  src: url('../fonts/icon-font.eot?#iefix') format('eot'),
+    url('../fonts/icon-font.woff2') format('woff2'),
+    url('../fonts/icon-font.woff') format('woff'),
+    url('../fonts/icon-font.ttf') format('truetype'),
+    url('../fonts/icon-font.svg#icon-font') format('svg');
+}
+
+$icon-font: (
+  
+    "icon-arrow": "\E001",
+  
+    "icon-calendar": "\E002",
+  
+    "icon-check": "\E003",
+  
+    "icon-linkedin": "\E004",
+  
+    "icon-menu--close": "\E005",
+  
+    "icon-menu--open": "\E006",
+  
+    "icon-tag": "\E007",
+  
+    "icon-x": "\E008",
+  
+);
+
+.suit-icon {
+  font-family:"icon-font" !important;
+  display:inline-block;
+  vertical-align:middle;
+  line-height:1;
+  font-weight:normal;
+  font-style:normal;
+  speak:none;
+  text-decoration:inherit;
+  text-transform:none;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+
+  .icon-arrow:before {
+    content: "\E001";
+  }
+
+  .icon-calendar:before {
+    content: "\E002";
+  }
+
+  .icon-check:before {
+    content: "\E003";
+  }
+
+  .icon-linkedin:before {
+    content: "\E004";
+  }
+
+  .icon-menu--close:before {
+    content: "\E005";
+  }
+
+  .icon-menu--open:before {
+    content: "\E006";
+  }
+
+  .icon-tag:before {
+    content: "\E007";
+  }
+
+  .icon-x:before {
+    content: "\E008";
+  }
+

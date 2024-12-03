@@ -1,0 +1,51 @@
+////
+/// Header
+/// @group Header
+/// @author Damián Muti
+////
+
+.header__main {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  padding-inline: 30px;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 40px auto 0;
+    padding: 10px 30px;
+    border-radius: 9999px;
+    background-color: white;
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+.header__logo {
+  display: inline-block;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+
+  a:not(.btn) {
+    padding-inline: 20px;
+    color: $suit-color--blue;
+    font-size: toem(16px);
+
+    &:nth-child(5) {
+      padding-right: 40px;
+    }
+  }
+
+  .btn {
+    margin-left: 15px;
+  }
+}
