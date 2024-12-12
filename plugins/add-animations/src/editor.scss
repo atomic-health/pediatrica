@@ -1,0 +1,25 @@
+.components-panel__row {
+  &.animations__row {
+    justify-content: end;
+
+    input[type="number"] {
+      width: 121.41px;
+    }
+  }
+
+  &.animations__row--set {
+    .components-base-control__field {
+      margin-bottom: 0;
+    }
+  }
+
+  &.animations__row--start {
+    margin-top: 25px;
+  }
+}
+
+.animation__toolbar-icon {
+  svg {
+    fill: #bc3990;
+  }
+}

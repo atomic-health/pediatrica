@@ -9,8 +9,8 @@
 
 ?>
 <footer class="footer__main">
-	<div class="wrapper">
-		<a href="" class="footer__logo">
+	<div class="section-wrapper">
+		<a href="<?php echo get_home_url(); ?>" class="footer__logo">
 			<svg width="208" height="68" viewBox="0 0 208 68" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" clip-rule="evenodd"
 					d="M29.1442 9.14104C23.6974 9.14104 19.2819 13.5565 19.2819 19.0033C19.2819 24.4501 23.6974 28.8656 29.1442 28.8656C34.591 28.8656 39.0065 24.4501 39.0065 19.0033C39.0065 13.5565 34.591 9.14104 29.1442 9.14104ZM16.2441 19.0033C16.2441 11.8788 22.0197 6.10327 29.1442 6.10327C36.2687 6.10327 42.0443 11.8788 42.0443 19.0033C42.0443 26.1278 36.2687 31.9034 29.1442 31.9034C22.0197 31.9034 16.2441 26.1278 16.2441 19.0033Z"
@@ -125,7 +125,7 @@
 				</div>
 				<div>
 					<header>
-						<a href="">Blog</a>
+						<a href="<?php echo get_home_url(); ?>/blog">Blog</a>
 					</header>
 					<a href="">Events</a>
 					<a href="">Patient Engagement Program</a>
@@ -137,7 +137,7 @@
 				</div>
 				<div>
 					<header>
-						<a href="">About Us</a>
+						<a href="<?php echo get_home_url(); ?>/about-us">About Us</a>
 					</header>
 					<a href="">Leadership</a>
 					<a href="">News</a>
@@ -154,17 +154,12 @@
 				<header>
 					<h3>See what Pediatrica can do for you</h3>
 				</header>
-				<a href="" class="btn btn--outline">Patient Portal</a>
-				<a href="" class="btn">
-					Schedule a Visit
-					<span class="icon icon--rounded icon--white">
-						<svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M1 3.89019C0.696243 3.89019 0.45 4.13643 0.45 4.44019C0.45 4.74394 0.696243 4.99019 1 4.99019L1 3.89019ZM15.3889 4.8291C15.6037 4.61431 15.6037 4.26607 15.3889 4.05128L11.8887 0.551099C11.6739 0.336311 11.3257 0.336311 11.1109 0.551099C10.8961 0.765887 10.8961 1.11413 11.1109 1.32892L14.2222 4.44019L11.1109 7.55146C10.8961 7.76624 10.8961 8.11449 11.1109 8.32927C11.3257 8.54406 11.6739 8.54406 11.8887 8.32927L15.3889 4.8291ZM1 4.99019L15 4.99019L15 3.89019L1 3.89019L1 4.99019Z"
-								fill="#293F76" />
-						</svg>
-					</span>
-				</a>
+				<div class="wp-block-button is-style-outline">
+					<a class="wp-block-button__link wp-element-button">Patient Portal</a>
+				</div>
+				<div class="wp-block-button is-style-has-rounded-arrow">
+					<a class="wp-block-button__link has-blue-background-color has-background wp-element-button">Schedule a Visit</a>
+				</div>
 			</div>
 		</div>
 
@@ -226,7 +221,7 @@
 				<p>©Pediatrica 2024</p>
 				<p>All Right Reserved</p>
 				<a href="">Terms and Conditions</a>
-				<a href="">Privacy Policy</a>
+				<a href="<?php echo get_home_url(); ?>/privacy-policy" title="Read ourPrivacy Policy">Privacy Policy</a>
 			</div>
 		</div>
 	</div>

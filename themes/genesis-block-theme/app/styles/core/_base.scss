@@ -6,6 +6,19 @@
 
 @import "./typography";
 
+// @view-transition {
+//   navigation: auto;
+// }
+
+// ::view-transition-old(root) {
+//   transform: scale(1.1);
+//   animation: fade-in-move .5s ease forwards;
+// }
+
+// ::view-transition-new(root) {
+//   animation: fade-in .5s ease forwards;
+// }
+
 *,
 *:before,
 *:after,
@@ -35,8 +48,8 @@ body {
 
 p {
   line-height: 1.6;
-  font-family: $suit-font-family--primary;
-  font-size: torem(18px);
+  font-family: $suit-font-family--secondary;
+  font-size: toem(18px);
 }
 
 img {
@@ -94,8 +107,7 @@ ul,
 ol,
 blockquote {
   line-height: 1.6;
-  font-family: $suit-font-family--primary;
-  font-size: torem(18px);
+  font-family: $suit-font-family--secondary;
 
   a {
     font-weight: 700;

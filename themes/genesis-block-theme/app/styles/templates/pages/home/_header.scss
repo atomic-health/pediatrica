@@ -15,4 +15,13 @@
       line-height: 1.7;
     }
   }
+
+  .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    max-width: 1220px;
+  }
+
+  .wp-block-cover, 
+  .wp-block-cover-image {
+    padding: 40px;
+  }
 }

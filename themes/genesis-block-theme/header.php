@@ -23,7 +23,7 @@
 
 	<header class="header__main">
 		<div>
-			<a href="#" class="header__logo">
+			<a href="<?php echo get_home_url(); ?>" class="header__logo">
 				<svg width="176" height="57" viewBox="0 0 176 57" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M24.5369 7.84229C19.951 7.84229 16.2334 11.5599 16.2334 16.1458C16.2334 20.7316 19.951 24.4492 24.5369 24.4492C29.1227 24.4492 32.8403 20.7316 32.8403 16.1458C32.8403 11.5599 29.1227 7.84229 24.5369 7.84229ZM13.6758 16.1458C13.6758 10.1473 18.5385 5.28467 24.5369 5.28467C30.5353 5.28467 35.398 10.1473 35.398 16.1458C35.398 22.1442 30.5353 27.0068 24.5369 27.0068C18.5385 27.0068 13.6758 22.1442 13.6758 16.1458Z" fill="#004589"/>
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M59.883 3.48438C53.8323 3.48438 48.9268 8.38994 48.9268 14.4406C48.9268 20.4912 53.8323 25.3968 59.883 25.3968C65.9336 25.3968 70.8392 20.4912 70.8392 14.4406C70.8392 8.38994 65.9336 3.48438 59.883 3.48438ZM46.3691 14.4406C46.3691 6.9774 52.4198 0.926758 59.883 0.926758C67.3462 0.926758 73.3968 6.9774 73.3968 14.4406C73.3968 21.9038 67.3462 27.9544 59.883 27.9544C52.4198 27.9544 46.3691 21.9038 46.3691 14.4406Z" fill="#007E59"/>
@@ -60,23 +60,26 @@
 				</svg>
 			</a>
 			<nav class="header__nav">
-				<a href="">About Us</a>
-				<a href="">Services</a>
-				<a href="">Patient Center</a>
-				<a href="">Locations</a>
-				<a href="">Join Us</a>
+				<?php
+					wp_nav_menu(
+						array(
+							'items_wrap'=> '%3$s', 
+							'walker' => new Nav_Header_Walker(), 
+							'container'=> false, 
+							'menu_class' => '', 
+							'theme_location'=>'primary', 
+							'fallback_cb'=> false 
+						)
+					);
+				?>
 
-				<a href="" class="btn btn--outline">Patient Portal</a>
-				<a href="" class="btn">
-					Schedule a Visit
-					<span class="icon icon--rounded icon--white">
-						<svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M1 3.89019C0.696243 3.89019 0.45 4.13643 0.45 4.44019C0.45 4.74394 0.696243 4.99019 1 4.99019L1 3.89019ZM15.3889 4.8291C15.6037 4.61431 15.6037 4.26607 15.3889 4.05128L11.8887 0.551099C11.6739 0.336311 11.3257 0.336311 11.1109 0.551099C10.8961 0.765887 10.8961 1.11413 11.1109 1.32892L14.2222 4.44019L11.1109 7.55146C10.8961 7.76624 10.8961 8.11449 11.1109 8.32927C11.3257 8.54406 11.6739 8.54406 11.8887 8.32927L15.3889 4.8291ZM1 4.99019L15 4.99019L15 3.89019L1 3.89019L1 4.99019Z"
-								fill="#293F76" />
-						</svg>
-					</span>
-				</a>
+				<div class="wp-block-button is-style-outline">
+					<a class="wp-block-button__link has-blue-background-color wp-element-button">Patient Portal</a>
+				</div>
+				<div class="wp-block-button is-style-has-rounded-arrow">
+					<a class="wp-block-button__link has-blue-background-color has-background wp-element-button">Schedule a Visit</a>
+				</div>
+				
 			</nav>
 		</div>
 	</header>

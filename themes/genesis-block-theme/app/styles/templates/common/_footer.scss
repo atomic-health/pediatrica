@@ -1,11 +1,10 @@
 .footer__main {
-  width: 100%;
   max-width: 1380px;
   margin: 80px auto 0;
   padding-inline: 30px;
   box-sizing: content-box;
 
-  > .wrapper {
+  > .section-wrapper {
     display: flex;
     flex-direction: column;
     padding: 40px 50px;
@@ -65,8 +64,6 @@
 
   header a {
     font-weight: 700;
-
-    pointer-events: none;
   }
 }
 
@@ -104,6 +101,7 @@
 
 .footer__terms {
   display: flex;
+  align-items: baseline;
   gap: 30px;
 
   p {

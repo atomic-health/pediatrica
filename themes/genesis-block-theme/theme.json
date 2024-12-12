@@ -10,6 +10,7 @@
 		"spacing": {
 			"margin": true,
 			"padding": true,
+			"blockGap": true,
 			"units": ["px", "vh", "vw", "%"]
 		},
 		"border": {
@@ -41,6 +42,16 @@
 					"color": "#FCFAF2"
 				},
 				{
+					"name": "Gray",
+					"slug": "gray",
+					"color": "#F2F0E7"
+				},
+				{
+					"name": "Dark Gray",
+					"slug": "dark-gray",
+					"color": "#262626"
+				},
+				{
 					"name": "Cyan",
 					"slug": "cyan",
 					"color": "#00667C"
@@ -49,6 +60,11 @@
 					"name": "Blue",
 					"slug": "blue",
 					"color": "#293F76"
+				},
+				{
+					"name": "Light Blue",
+					"slug": "light-blue",
+					"color": "#D9DEEF"	
 				},
 				{
 					"name": "Purple",
@@ -68,19 +84,19 @@
 			"lineHeight": true,
 			"fontFamilies": [
 				{
-					"fontFamily": "'PPNeueMontreal', sans-serif",
-					"name": "PP Neue Montreal",
-					"slug": "pp-neue-montreal"
+					"fontFamily": "'Museo Slab 500', sans-serif",
+					"name": "Museo Slab 500",
+					"slug": "museo-slab-500"
 				},
 				{
-					"fontFamily": "'TestMartinaPlantijn', serif",
-					"name": "Martina Plantijn",
-					"slug": "martina-plantijn"
+					"fontFamily": "'Proxima Nova', serif",
+					"name": "Proxima Nova",
+					"slug": "proxima-nova"
 				},
 				{
-					"fontFamily": "'EuclidCircularBTrial', sans-serif",
-					"name": "Euclid Circular",
-					"slug": "euclid-circular"
+					"fontFamily": "'Neutraface Text', serif",
+					"name": "Neutraface Text",
+					"slug": "neutraface-text"
 				}
 			]
 		},
@@ -88,34 +104,14 @@
 			"defaultPresets": false,
 			"presets": [
 				{
-					"name": "Brown",
-					"slug": "brown",
-					"shadow": "0px 4px 208.5px 0px rgba(218, 94, 71, 0.12)"
+					"name": "Box",
+					"slug": "box",
+					"shadow": "0px 4px 64px 0px rgba(0, 0, 0, 0.08)"
 				},
 				{
-					"name": "Gray",
-					"slug": "gray",
-					"shadow": "0px 4px 64px 0px rgba(37, 37, 37, 0.05)"
-				},
-				{
-					"name": "Pill",
-					"slug": "pill",
-					"shadow": "0px 3.849px 27.731px 0px rgba(0, 0, 0, 0.08)"
-				},
-				{
-					"name": "Card",
-					"slug": "card",
-					"shadow": "0px 4px 94px 0px rgba(0, 0, 0, 0.05)"
-				},
-				{
-					"name": "Blue",
-					"slug": "blue",
-					"shadow": "0px 4px 33.4px 0px rgba(38, 178, 191, 0.10)"
-				},
-				{
-					"name": "Dark",
-					"slug": "dark",
-					"shadow": "0px 3.248px 67.288px rgba(0, 0, 0, 0.12)"
+					"name": "Box no bottom",
+					"slug": "box-no-bottom",
+					"shadow": "0px -15px 64px -15px rgba(0, 0, 0, 0.08);"
 				}
 			]
 		}
@@ -124,12 +120,12 @@
 		"blocks": {
 			"core/heading": {
 				"color": {
-					"text": "var(--wp--preset--color--dark-gray)"
+					"text": "var(--wp--preset--color--blue)"
 				}
 			},
 			"core/paragraph": {
 				"color": {
-					"text": "var(--wp--preset--color--gray)"
+					"text": "var(--wp--preset--color--blue)"
 				}
 			}
 		},

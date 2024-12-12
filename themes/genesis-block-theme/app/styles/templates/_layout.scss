@@ -16,7 +16,7 @@
   }
 }
 
-.wrapper {
+.section-wrapper {
   @include respond-to('mobile-h') {
     padding-left: 20px;
     padding-right: 20px;

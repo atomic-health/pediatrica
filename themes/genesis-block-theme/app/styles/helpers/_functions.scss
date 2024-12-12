@@ -150,12 +150,27 @@
   @return $color;
 }
 
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
 /// Generates an SVG with a given fill color depending on the type of icon passed as parameter. The SVG string is scaped for cross-browser support.
 /// @param {string} $icon - Type of icon.
+/// @param {string} $size - Size in SVG format.
 /// @param {color} $color - Passes the fill color of the SVG icon that is being generated.
-/// @return {string} background value.
-@function get-icon($icon, $color) {
-  @return url('data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22' + color-encode($color) + '%22%20d%3D%22' + $icon + '%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E') center / cover no-repeat;
+/// @return {string} DATA URI image.
+@function get-icon($icon, $width, $height, $color) {
+  $svg-string: 
+    '<svg width="' + $width + '" height="' + $height + '" viewBox="0 0 ' + strip-unit($width) + ' ' + strip-unit($height) + '" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="' + $icon + '" fill="' + $color + '"/></svg>';
+
+  @return url('data:image/svg+xml;utf8,' + url-encode($svg-string));
 }
 
 /// Get values in a multidimentional map
@@ -163,6 +178,7 @@
 /// @param {map} $map - Map
 /// @param {arglist} $keys - Keys to fetch
 /// @return {*}
+/// 
 @function map-deep-get($map, $keys...) {
   @each $key in $keys {
     $map: map-get($map, $key);

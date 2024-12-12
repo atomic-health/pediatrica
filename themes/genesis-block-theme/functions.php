@@ -36,7 +36,16 @@ if ( ! function_exists( 'genesis_block_theme_setup' ) ) :
 		/**
 		 * Add styles to post editor.
 		 */
-		add_editor_style( array( genesis_block_theme_fonts_url(), 'style-editor.css', 'style.css' ) );
+		add_editor_style( 
+			array( 
+				genesis_block_theme_fonts_url(), 
+				'style-editor.css', 
+				'https://fonts.cdnfonts.com/css/museo-slab-500',
+				'https://db.onlinewebfonts.com/c/bf9f5d50c1b928ff21436517a1a95ad9?family=Proxima+Nova',
+				'style.css',
+				'https://fonts.cdnfonts.com/css/neutraface-text'
+			) 
+		);
 
 		/*
 		* Make theme available for translation.
@@ -219,6 +228,9 @@ function genesis_block_theme_scripts() {
 	* Load fonts.
 	*/
 	wp_enqueue_style( 'genesis-block-theme-fonts', genesis_block_theme_fonts_url(), [], null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- see https://core.trac.wordpress.org/ticket/49742
+	wp_enqueue_style( 'museo-slab-cdn', 'https://fonts.cdnfonts.com/css/museo-slab-500', [], null );
+	wp_enqueue_style( 'proxima-nova-cdn', 'https://db.onlinewebfonts.com/c/bf9f5d50c1b928ff21436517a1a95ad9?family=Proxima+Nova', [], null );
+	wp_enqueue_style( 'neutraface-text-cdn', 'https://fonts.cdnfonts.com/css/neutraface-text', [], null );
 
 	/**
 	 * Icons stylesheet.
@@ -342,6 +354,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Theme Updates.
  */
 require get_template_directory() . '/inc/updates/updates.php';
+
+/**
+ * Main nav walker.
+ */
+require get_template_directory() . '/inc/menu/walker__main-nav.php';
 
 
 /**
@@ -511,3 +528,50 @@ function genesis_block_theme_is_block_editor() {
 	// This is a Gutenberg Block Editor page.
 	return true;
 }
+
+if ( function_exists( 'register_block_style' ) ) {
+	register_block_style(
+			'core/button',
+			array(
+					'name'         => 'has-arrow',
+					'label'        => __( 'Has arrow', 'textdomain' ),
+					'is_default'   => false
+			)
+	);
+
+	register_block_style(
+		'core/button',
+		array(
+				'name'         => 'has-rounded-arrow',
+				'label'        => __( 'Has rounded arrow', 'textdomain' ),
+				'is_default'   => false
+		)
+	);
+
+	register_block_style(
+		'core/button',
+		array(
+				'name'         => 'has-multicolor-outline',
+				'label'        => __( 'Multicolor', 'textdomain' ),
+				'is_default'   => false
+		)
+	);
+}
+
+
+// Add custom body classes based on the slug
+function custom_body_classes( $classes ) {
+	global $post;
+
+	if ( is_page() ) {
+		$classes[] = 'page--'.$post->post_name;
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', 'custom_body_classes' );
+
+/**
+ * Post types
+ */
+//require get_template_directory() . '/inc/post-types/events.php';

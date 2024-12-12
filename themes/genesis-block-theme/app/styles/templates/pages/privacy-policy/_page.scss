@@ -1,0 +1,68 @@
+.page--privacy-policy {
+  section {
+    h2,
+    h3,
+    ul,
+    ul li,
+    p {
+      color: $suit-color--darkgray;
+      text-wrap: unset;
+    }
+  
+    h1 {
+      margin-bottom: 40px;
+    }
+  
+    h2 {
+      margin-top: 40px;
+      text-transform: uppercase;
+      font-size: 18px;
+      line-height: 1.6;
+      text-wrap: unset;
+    }
+  
+    h3 {
+      font-family: $suit-font-family--secondary;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+  
+    p {
+      margin-top: 15px;
+    }
+  
+    p,
+    ul,
+    ul li {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    
+    ul {
+      margin: 0;
+      padding-left: 0;
+      list-style-position: inside;
+      list-style-type: none;
+      
+  
+      li {
+        position: relative;
+        padding-left: 25px;
+  
+        &:before { 
+          content:"•"; 
+          position: absolute;
+          left: 10px;
+          font-size:17px; 
+          vertical-align:top; 
+          padding-right:10px; 
+        }
+      }
+    }
+
+    a {
+      color: $suit-color--blue;
+    }
+  }
+}

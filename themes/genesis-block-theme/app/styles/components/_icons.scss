@@ -4,3 +4,22 @@
 ////
 
 @import "../libs/iconfont/icon-font";
+
+.c--icon-text {
+  margin: 0;
+  overflow: clip;
+
+  .icon {
+    display: grid;
+    place-items: center;
+    height: 46px;
+    min-width: 46px;
+    flex-basis: 46px !important;
+
+  }
+  
+  .text {
+    flex-basis: auto !important;
+    flex-shrink: 0;
+  }
+}
