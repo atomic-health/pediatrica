@@ -1,0 +1,11 @@
+@use "../../../utils" as *;
+
+
+
+.wp-block-post {
+  &.type-leadership {
+    p {
+      color: $suit-color--darkgray;
+    }
+  }
+}

@@ -10148,7 +10148,6 @@ const generateClassName = attributes => {
   if (attributes.hasAnimation && !attributes.animationStart) {
     string += ` do--animation`;
   }
-  console.log(string);
   return string;
 };
 (0,_10up_block_components__WEBPACK_IMPORTED_MODULE_0__.registerBlockExtension)(["core/group", "core/column", "core/paragraph", "core/heading"], {

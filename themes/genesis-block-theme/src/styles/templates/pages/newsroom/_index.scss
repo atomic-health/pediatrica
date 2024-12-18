@@ -1,0 +1,67 @@
+@use "../../../utils" as *;
+@use "../../../components/buttons";
+
+.newsroom__query--sticky {
+  .wp-block-post {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+  }
+
+  .wp-block-post-excerpt {
+    margin-top: auto;
+  }
+
+  .wp-block-post-excerpt__excerpt {
+    display: none;
+  }
+
+  h2 {
+    text-wrap: unset;
+
+    a {
+      color: $suit-color--blue
+    }
+  }
+
+  .wp-block-post-excerpt__more-link {
+    @extend .btn;
+
+    font-size: toem(14px);
+    color: white !important;
+    background-color: $suit-color--purple;
+
+    &:hover {
+      background-color: color-mix(in srgb, $suit-color--purple,#000 40%);;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.newsroom__query {
+  .wp-block-post-template {
+    li {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .wp-block-post-excerpt {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+  }
+
+  .wp-block-post-excerpt__more-text {
+    margin-top: auto;
+    padding-top: 30px;
+  }
+
+  .wp-block-post-excerpt__excerpt {
+    line-height: 1.5;
+    color: $suit-color--darkgray;
+  }
+}

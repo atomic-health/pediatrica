@@ -1,0 +1,28 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "description": "SASS compile|autoprefix|minimize and assets management",
+  "main": "public/index.html",
+  "author": "5t3ph",
+  "scripts": {
+    "copy:js": "copyfiles -u 1 src/js/**/* .",
+    "copy": "npm-run-all --parallel copy:*",
+    "watch:js": "onchange \"src/js/**/*\" -- npm run copy:js",
+    "watch:postcss": "postcss style.css -o style.css -u autoprefixer cssnano --watch",
+    "watch:sass": "sass --watch src/styles:.",
+    "watch": "npm-run-all --parallel watch:*",
+    "sync": "browser-sync start --proxy \"https://pediatrica.local/\" --files \"*.css\"",
+    "start": "npm-run-all copy --parallel watch"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.7",
+    "copyfiles": "^2.4.1",
+    "cssnano": "^5.0.17",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^9.1.0",
+    "rimraf": "^6.0.1",
+    "sass": "^1.49.8"
+  }
+}

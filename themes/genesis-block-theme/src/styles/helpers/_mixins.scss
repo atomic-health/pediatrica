@@ -1,0 +1,164 @@
+////
+/// Functions
+/// @group Mixins
+/// @author Damian Muti
+////
+/// Debug layout by drawing borders around every element
+/// Uncomment the following line to debug layout's box model.
+/// include edit();
+@use "../core/settings" as *;
+@use "sass:map";
+@use "sass:list";
+
+@mixin debug-layout() {
+  * {
+    outline: 2px dotted red;
+  }
+  * * {
+    outline: 2px dotted green;
+  }
+  * * * {
+    outline: 2px dotted orange;
+  }
+  * * * * {
+    outline: 2px dotted blue;
+  }
+  * * * * * {
+    outline: 1px solid red;
+  }
+  * * * * * * {
+    outline: 1px solid green;
+  }
+  * * * * * * * {
+    outline: 1px solid orange;
+  }
+  * * * * * * * * {
+    outline: 1px solid blue;
+  }
+}
+
+/// Control element's aspect ratio
+/// @param {number} width - The width
+/// @param {number} height - The height
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  >.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/// Create a single media condition out of a map of queries
+/// @param {String} queries - The queries
+@mixin media($queries) {
+  @if list.length($queries) == 0 {
+    @content;
+  }
+  @else {
+    $first-key: list.nth(map.keys($queries), 1);
+    @media ($first-key: map.get($queries, $first-key)) {
+      $queries: map.remove($queries, $first-key);
+
+      @include media($queries) {
+        @content;
+      }
+    }
+  }
+}
+
+/// Gets the media query from the Media Queries List Configured in `$suit-breakpoints`
+/// @param {String} breakpoint - The breakpoint to search on `$suit-breakpoints` List
+@mixin respond-to($breakpoint) {
+  // Get the query map for $suit-breakpoints map
+  $queries: map.get($suit-breakpoints, $breakpoint);
+
+  // If there is no query called $breakpoint in map, throw an error
+  @if not $queries {
+    @error "No value could be retrieved from `#{$breakpoint}`. Please make sure it is defined in `$suit-breakpoints` map.";
+  }
+
+  // Include the media mixin with $queries
+  @include media($queries) {
+    @content;
+  }
+}
+
+/// Triangle helper mixin
+/// @param {Direction} $direction - Triangle direction, either `top`, `right`, `bottom` or `left`
+/// @param {Color} $color [currentcolor] - Triangle color
+/// @param {Length} $size [1em] - Triangle size
+@mixin triangle($direction, $color: currentcolor, $size: 5px) {
+  @if not index(top right bottom left, $direction) {
+    @error "Direction must be either 'top', 'right', 'bottom' or 'left'.";
+  }
+
+  $perpendicular-borders: $size solid transparent;
+  
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-#{$direction}: $size solid $color;
+
+  @if $direction == top or $direction == bottom {
+    border-left: $perpendicular-borders;
+    border-right: $perpendicular-borders;
+  }
+  @else if $direction == right or $direction == left {
+    border-bottom: $perpendicular-borders;
+    border-top: $perpendicular-borders;
+  }
+}
+
+/// Generates an SVG with a given fill color depending on the type of icon passed as parameter. The SVG string is scaped for cross-browser support.
+/// @param {string} $icon - Type of icon.
+/// @param {color} $color - Passes the fill color of the SVG icon that is being generated.
+/// @return {string} background value.
+@mixin get-icon($icon, $color: currentColor, $type: 'font' ) {
+  @if $type == 'font' {
+    content: map-get($icon-font, $icon);
+  }
+  // } @else {
+  //   @return url('data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22' + color-encode($color) + '%22%20d%3D%22' + $icon + '%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E') center / cover no-repeat;
+  // }
+  
+}
+
+@mixin c-separator($position, $width: 4px, $type: multicolor) {
+  @if not index(top bottom, $position) {
+    @error "Position must be either `top` or `bottom`.";
+  }
+
+  @if not index(multicolor green lightblue, $type) {
+    @error "Type must be either `multicolor`, `green` or `lightblue`.";
+  }
+
+  @if $type == multicolor {
+    background: linear-gradient(90deg, rgba(255,246,33,1) 0%, rgba(131,254,158,1) 100%);
+  }
+  @if $type == green {
+    background: linear-gradient(90deg, rgba(246,253,255,1) 0%, rgba(212,251,132,1) 100%);
+  }
+  @if $type == lightblue {
+    background: linear-gradient(90deg, #F6FDFF 0%, #B8EFFC 100%);
+  }
+
+  padding-#{$position}: $width;
+  background-size: 100% $width;
+  background-repeat: no-repeat;
+
+  @if $position == top {
+    background-position: top center;
+  }
+  @if $position == bottom {
+    background-position: bottom center;
+  }
+}

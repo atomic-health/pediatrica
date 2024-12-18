@@ -1,0 +1,69 @@
+@use "../utils" as *;
+@use "sass:color";
+
+.wp-block-query-pagination {
+  gap: 0;
+  margin-top: 35px !important;
+
+  .wp-block-query-pagination-numbers {
+    display: flex;
+    gap: 2px;
+  }
+
+  .page-numbers {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-family: $suit-font-family--primary;
+    font-size: 14px;
+    font-weight: 700;
+    color: $suit-color--blue;
+    text-decoration: none !important;
+
+    &:not(.current),
+    &:not(.dots) {
+      &:hover {
+        background-color: #d6dff9;
+      }
+    }
+
+    &.current {
+      background-color: #F3F6FE;
+    }
+  }
+
+  .wp-block-query-pagination-previous,
+  .wp-block-query-pagination-next {
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+
+    span {
+      display: none !important;
+    }
+
+    &::after {
+      content: url("./images/arrow-right.svg");
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      transition: all .25s ease;
+    }
+
+    &:hover {
+      &::after {
+        transform: translateX(3px);
+      }
+    }
+  }
+
+  .wp-block-query-pagination-previous {
+    &::after {
+      rotate: .5turn;
+    }
+  }
+}

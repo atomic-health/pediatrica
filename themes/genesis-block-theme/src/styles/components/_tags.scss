@@ -1,0 +1,21 @@
+@use "../utils" as *;
+
+.wp-block-post-terms {
+  > *:not(a:first-of-type) {
+    display: none;
+  }
+
+  a {
+    width: fit-content;
+    padding: 8px 13px;
+    border: 1px solid $suit-color--cyan;
+    border-radius: 9999px;
+    font-family: $suit-font-family--primary;
+    font-size: 13px;
+    font-weight: 500;
+    color: $suit-color--cyan;
+    background-color: #DBF7FF;
+    pointer-events: none;
+    text-decoration: none;
+  }
+}

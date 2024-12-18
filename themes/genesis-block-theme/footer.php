@@ -107,15 +107,27 @@
 
 		<div class="footer__main-nav">
 			<nav class="footer__nav">
-				<div>
+			<?php
+					wp_nav_menu(
+						array(
+							'items_wrap'=> '%3$s', 
+							'walker' => new Nav_Footer_Walker(), 
+							'container'=> false, 
+							'menu_class' => '', 
+							'theme_location'=>'footer', 
+							'fallback_cb'=>false 
+						)
+					);
+				?>
+				<!-- <div>
 					<header>
 						<a href="">Services</a>
 					</header>
-					<a href="">Same Day Appointments</a>
-					<a href="">Telemedicine</a>
-					<a href="">Routine Wellness</a>
-					<a href="">Prevention Screening & Early Detection</a>
-					<a href="">Chronic Disease Management</a>
+					<a href="<?php echo get_home_url(); ?>/services#same-day-appointments">Same Day Appointments</a>
+					<a href="<?php echo get_home_url(); ?>/services#telemedicine">Telemedicine</a>
+					<a href="<?php echo get_home_url(); ?>/services#routine-wellness">Routine Wellness</a>
+					<a href="<?php echo get_home_url(); ?>/services#prevention-screening-and-early-detection">Prevention Screening & Early Detection</a>
+					<a href="<?php echo get_home_url(); ?>/services#chronic-disease-management">Chronic Disease Management</a>
 				</div>
 				<div>
 					<header>
@@ -139,16 +151,16 @@
 					<header>
 						<a href="<?php echo get_home_url(); ?>/about-us">About Us</a>
 					</header>
-					<a href="">Leadership</a>
-					<a href="">News</a>
+					<a href="<?php echo get_home_url(); ?>/leadership">Leadership</a>
+					<a href="<?php echo get_home_url(); ?>/newsroom">News</a>
 				</div>
 				<div>
 					<header>
 						<a href="">Join Us</a>
 					</header>
-					<a href="">Be a Pediatrica Provider</a>
-					<a href="">Careers</a>
-				</div>
+					<a href="<?php echo get_home_url(); ?>/be-a-pediatrica-provider">Be a Pediatrica Provider</a>
+					<a href="<?php echo get_home_url(); ?>/careers">Careers</a>
+				</div> -->
 			</nav>
 			<div class="footer__cta">
 				<header>

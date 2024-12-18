@@ -1,0 +1,209 @@
+@use "../../../utils" as *; 
+
+.home__hero {
+  min-height: 770px;
+  padding: 0;
+
+  > .wp-block-cover {
+    max-width: unset;
+    min-height: 770px;
+  }
+
+  h1 {
+    font-size: 74px;
+
+    + p {
+      margin-block: 40px;
+      padding-right: 45vw;
+      line-height: 1.7;
+    }
+  }
+
+  .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    max-width: 1220px;
+  }
+
+  .wp-block-cover, 
+  .wp-block-cover-image {
+    padding: 40px;
+  }
+}
+
+
+
+.home__welcome {
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(242,240,231,1) 30%, rgba(242,240,231,1) 100%);
+
+  &.section-wrapper {
+    max-width: unset;
+  }
+
+  .wrapper {
+    transform: translateY(-60px);
+    background: linear-gradient(0deg,rgb(240,238,229) 0%,rgb(245,243,234) 70%, rgb(245,243,234) 70%, #f2f0e7 100%) !important;
+  }
+
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: 50px;
+    row-gap: 30px;
+    max-width: 950px;
+    margin: 0 auto;
+  }
+
+  .c--icon-text {
+    margin: 0 !important;
+  }
+
+  p {
+    text-wrap: balance;
+  }
+}
+
+.home__difference {
+  hr {
+    width: 100% !important;
+    height: 3px !important;
+  }
+}
+
+.home__services {
+  .wp-block-column {
+    ///
+    --c-color-1: #{$suit-color--purple};
+    ///
+    --c-color-1-width: 45%;
+    ///
+    --c-color-2: #{$suit-color--blue};
+
+    max-width: 381px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-image:
+      linear-gradient(var(--c-color-1), var(--c-color-1)),
+      linear-gradient(var(--c-color-2), var(--c-color-2));
+    background-size: 
+      var(--c-color-1-width) 11px,
+      100% 11px;
+  }
+
+  .wp-block-columns {
+    justify-content: center;
+
+    &:nth-of-type(1) {
+      .wp-block-column {
+        &:nth-of-type(1) {
+          --c-color-1: #{$suit-color--purple};
+          --c-color-1-width: 45%;
+          --c-color-2: #{$suit-color--blue};
+        }
+    
+        &:nth-of-type(2) {
+          --c-color-1: #{$suit-color--yellow};
+          --c-color-1-width: 70%;
+          --c-color-2: #{$suit-color--blue};
+        }
+    
+        &:nth-of-type(3) {
+          --c-color-1: #{$suit-color--purple};
+          --c-color-1-width: 35%;
+          --c-color-2: #{$suit-color--cyan};
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      .wp-block-column {
+        &:nth-of-type(1) {
+          --c-color-1: #{$suit-color--yellow};
+          --c-color-1-width: 35%;
+          --c-color-2: #{$suit-color--purple};
+        }
+    
+        &:nth-of-type(2) {
+          --c-color-1: #{$suit-color--cyan};
+          --c-color-1-width: 35%;
+          --c-color-2: #{$suit-color--blue};
+        }
+      }
+    }
+  }
+}
+
+
+
+// :root {
+// @each $color in $colors {
+  
+//     --#{$color}: #{$color};
+  
+// }
+// }
+
+// .home__why {
+//   position: relative;
+//   //background-color: transparent !important;
+
+//   @each $color in $colors {
+//     &.has-#{$color}-background-color {
+//       --bg: var(--wp--preset--color--#{$color});
+//     }
+//   }
+  
+
+//   .background {
+//     content: "";
+//     position: absolute;
+//     width: 150vw;
+//     left: 50%;
+//     top: 50%;
+//     height: 100%;
+//     padding-block: 25%;
+//     border-radius: 50%;
+//     transform: translate(-50%, -50%);
+//     background-color: var(--bg);
+    
+//   }
+// }
+
+.editor-styles-wrapper {
+  .home__why {  
+    .content {
+      width: 100%;
+      max-width: 1100px !important;
+    }
+  }
+}
+
+.home__why {
+  position: relative;
+  width: 120vw;
+  max-width: unset !important;
+  left: 50%;
+  padding: 15% 0 20%;
+  transform: translateX(-50%);
+
+  .content {
+    //width: 100%;
+    //max-width: 75%;
+    width: Min(1215px, 60%);
+  }
+
+  p {
+    text-wrap: balance;
+  }
+}
+
+.home__locations {
+  h3,
+  p {
+    text-wrap: balance;
+  }
+
+  .wp-block-cover .wp-block-cover__image-background {
+    max-width: 60%;
+  }
+}

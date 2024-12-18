@@ -356,9 +356,10 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/updates/updates.php';
 
 /**
- * Main nav walker.
+ * Nav walkers.
  */
 require get_template_directory() . '/inc/menu/walker__main-nav.php';
+require get_template_directory() . '/inc/menu/walker__footer-nav.php';
 
 
 /**
@@ -571,7 +572,370 @@ function custom_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'custom_body_classes' );
 
+
+function custom_admin_body_classes( $classes ) {
+	global $post;
+	$screen = get_current_screen();
+
+	if ( $screen->is_block_editor == 1 ) {
+		$classes = 'page--'.$post->post_name;
+	}
+
+	return $classes;
+}
+add_filter( 'admin_body_class', 'custom_body_classes' );
+
 /**
  * Post types
  */
 //require get_template_directory() . '/inc/post-types/events.php';
+
+/**
+ * Get block by name and print it in the frontend.
+ */
+
+function get_the_pattern( $name ) {
+	$pattern = '';
+	$pattern_query = get_posts([
+    'title' => $name,
+    'post_type' => 'wp_block',
+	]);
+	
+	if( !empty( $pattern_query[0] ) ) {
+		$pattern = $pattern_query[0]->post_content;
+	}
+
+	return $pattern;
+}
+
+function the_pattern( $name ) {
+	echo do_blocks( get_the_pattern( $name ) );
+}
+
+
+
+/**
+ * Autoload patterns into Newsroom posts.
+ */
+// function autoload_patterns_for_newsroom_posts( $content, $post ) {
+// 	if ( $post->post_type === 'newsroom' ) {
+// 			$content = get_the_pattern( 'Newsroom - post title' );    
+// 	}
+// 	return $content;
+// }
+// add_filter( 'default_content', 'autoload_patterns_for_newsroom_posts', 10, 2 );
+
+
+function prefix_editor_assets() {
+	wp_enqueue_script(
+		'prefix-block-variations',
+		get_template_directory_uri() . '/js/block-variations.js',
+		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ) // loads dependencies
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'prefix_editor_assets' );
+
+
+
+/**
+ * HANDLE FRONTEND
+ */
+function filter_sticky_posts( $query, $block ) {	
+	$query['post__in'] = get_option('sticky_posts');
+	
+	return $query;
+}
+
+function newsroom_pre_render_sticky_query_block( $pre_render, $parsed_block ) {
+  if ( !empty($parsed_block['attrs']['namespace']) && 'newsroom--sticky' === $parsed_block['attrs']['namespace'] ) {
+    add_filter( 'query_loop_block_query_vars', 'filter_sticky_posts', 10, 2 );
+  } elseif ( $parsed_block['blockName'] === 'core/query' ) {
+		remove_filter( 'query_loop_block_query_vars', 'filter_sticky_posts', 10, 2 );
+	}
+	
+  return $pre_render;
+}
+add_filter( 'pre_render_block', 'newsroom_pre_render_sticky_query_block', 10, 2 );
+
+
+/**
+ * HANDLE BACKEND
+ */
+function newsroom_query_sticky_api_filter( $args, $request ) {
+  $stickyFilter = $request['doSticky'];
+
+  if ( $stickyFilter == true ) {
+    $args['post__in'] = get_option('sticky_posts');
+  }
+  
+  return $args;
+}
+add_filter( 'rest_newsroom_query', 'newsroom_query_sticky_api_filter', 10, 2 );
+
+
+
+
+
+
+
+function filter_exclude_current_post( $query, $block ) {	
+	global $post;
+
+	$current_post_taxonomy = get_the_terms( $post->ID, 'newsroom-type' );
+
+	$query['post__not_in'] = array(737);
+	$query['orderby'] = 'rand';
+	$query['post__not_in'] = get_option('sticky_posts');
+	$query['tax_query'] = array(
+			array(
+			'taxonomy' => 'newsroom-type',
+			'field' => 'term_id',
+			'terms' => $current_post_taxonomy[0]->term_id,
+			),
+		);
+	
+	return $query;
+}
+
+function newsroom_pre_render_exclude_current_post_query_block( $pre_render, $parsed_block ) {
+  if ( !empty($parsed_block['attrs']['namespace']) && 'newsroom--exclude-current' === $parsed_block['attrs']['namespace'] ) {
+    add_filter( 'query_loop_block_query_vars', 'filter_exclude_current_post', 10, 2 );
+  }
+	
+  return $pre_render;
+}
+add_filter( 'pre_render_block', 'newsroom_pre_render_exclude_current_post_query_block', 10, 2 );
+
+
+
+
+
+function filter_posts_exclude_current_post( $query, $block ) {	
+	global $post;
+
+	$query['post__not_in'] = array($post->ID);
+	
+	return $query;
+}
+
+function posts_pre_render_exclude_current_post_query_block( $pre_render, $parsed_block ) {
+  if ( !empty($parsed_block['attrs']['namespace']) && 'post--exclude-current' === $parsed_block['attrs']['namespace'] ) {
+    add_filter( 'query_loop_block_query_vars', 'filter_posts_exclude_current_post', 10, 2 );
+  }
+	
+  return $pre_render;
+}
+add_filter( 'pre_render_block', 'posts_pre_render_exclude_current_post_query_block', 10, 2 );
+
+
+
+
+
+
+
+/**
+ * Change the permalink structure for newsroom posts.
+ */
+function filter_post_type_link($link, $post) {
+    if ($post->post_type != 'newsroom')
+        return $link;
+
+    if ($cats = get_the_terms($post->ID, 'newsroom-type')) {
+			if ( $cats[0]->slug == 'in-the-news' ) {
+				$link = get_field('external_link', $post->ID);
+			} else {
+				$link = str_replace('%newsroom-type%', array_pop($cats)->slug, $link);
+			}
+		}
+
+    return $link;
+}
+add_filter('post_type_link', 'filter_post_type_link', 10, 2);
+
+
+function add_blank_target_to_newsroom_excerpt_link( $block_content, $block ) {
+	global $post;
+
+	if ( $post->post_type != 'newsroom' ) {
+		return $block_content;
+	}
+
+	if ( has_term( 'in-the-news', 'newsroom-type', $post ) ) {
+		// Add the custom class to the block content using the HTML API.
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+
+		if ( $processor->next_tag( 'a' ) ) {
+				$processor->set_attribute( 'target', '_blank' );
+		}
+
+		return $processor->get_updated_html();
+	} else {
+		return $block_content;
+	}	
+}
+add_filter( 'render_block_core/post-excerpt', 'add_blank_target_to_newsroom_excerpt_link', 10, 2 );
+
+
+
+
+
+
+
+function register_leadership_role_field() {
+
+	// Check function exists.
+	if( function_exists('acf_register_block_type') ) {
+
+			// Register a custom block.
+			acf_register_block_type(array(
+					'name'              => 'acf_leadership_role',
+					'title'             => __('Leadership Role'),
+					'description'       => __('A custom block to display the role for a leadership member.'),
+					'render_callback'   => 'render_leadership_role_field',
+					'category'          => 'formatting',
+					'icon'              => 'businessman',
+					'keywords'          => array( 'contact', 'title' ),
+					'post_types'				=> array( 'leadership', 'page' ),
+					'supports'					=> array( 
+						'typography'			=> array(
+							'fontSize'			=> true,
+							'lineHeight'		=> true,
+						)
+					)
+			));
+	}
+}
+add_action('acf/init', 'register_leadership_role_field');
+
+function render_leadership_role_field( $block ) {
+
+	// Get the post ID
+	$post_id = get_the_ID();
+
+	// Get the contact title ACF field
+	$role = get_field('leadership-role', $post_id);
+
+	// Display the contact title
+	echo '<p>' . $role . '</p>';
+}
+
+
+
+
+
+
+
+
+function set_custom_edit_leadership_columns($columns) {
+	unset( $columns['date'] );
+	$columns['title'] = __( 'Name', 'your_text_domain' );
+	$columns['role'] = __( 'Role', 'your_text_domain' );
+	$columns['order-in-list'] = __( 'Order', 'your_text_domain' );
+
+	return $columns;
+}
+add_filter( 'manage_leadership_posts_columns', 'set_custom_edit_leadership_columns' );
+
+
+function custom_leadership_column( $column, $post_id ) {
+	switch ( $column ) {
+		case 'role' :
+			echo get_post_meta( $post_id , 'leadership-role' , true ); 
+			break;
+
+		case 'order-in-list' :
+			echo get_post_meta( $post_id , 'order-in-list' , true ); 
+			break;
+	}
+}
+add_action( 'manage_leadership_posts_custom_column' , 'custom_leadership_column', 10, 2 );
+
+
+    
+function reorder_leadership_post_list( $query ) {
+  if ( isset($query->query['post_type']) && $query->query['post_type'] == 'leadership' ) {
+    $query->set('meta_key', 'order-in-list');
+    $query->set('orderby', 'meta_value_num');
+		$query->set('meta_type', 'NUMERIC');
+		$query->set('order', 'ASC');
+  }
+}
+add_action('pre_get_posts', 'reorder_leadership_post_list');
+
+
+
+
+
+/**
+ * Custom login form styles.
+ */
+function custom_login_styles() { 
+	?> 
+		<style type="text/css"> 
+			#login {
+				padding: 10% 0 0 !important;
+			}
+	
+			body.login div#login h1 a {
+				width: 196px;
+				height: 77px; 
+				margin: 30px auto;
+				background: url("<?php echo get_template_directory_uri(); ?>/images/logo--color.svg") center / 100% no-repeat;
+			} 
+	
+			#loginform,
+			#lostpasswordform {
+				border-radius: 10px;
+				border: none;
+				box-shadow: 0 5px 60px 0 rgba(0, 0, 0, .1);
+			}
+	
+			.login #nav,
+			.login #backtoblog {
+				text-align: center;
+			}
+	
+			.login .message, 
+			.login .notice, 
+			.login .success {
+				border-radius: 10px;
+			}
+		</style>
+	<?php
+	}
+	add_action( 'login_enqueue_scripts', 'custom_login_styles' );
+
+
+
+	/**
+ * Remove items from the main menu for non admin users.
+ */
+function remove_main_menu_items(){
+	global $submenu;
+	$current_user = wp_get_current_user();
+
+	remove_menu_page('edit-comments.php'); // Comments
+	remove_menu_page( 'admin.php?page=filebird-settings' ); // Comments
+
+	if(array_key_exists('themes.php', $submenu)) {
+		foreach($submenu['themes.php'] as $i => $item) {
+			if (in_array($item['0'], array(__('Customize'), __('Widgets'), __('Background')))) {
+				unset($submenu['themes.php'][$i]);
+			}
+		}
+	}
+
+	if( $current_user->roles[0] != 'administrator' ) {
+		define( 'DISALLOW_FILE_EDIT', true );
+		remove_menu_page('tools.php'); // Comments
+
+	// 	remove_menu_page('plugins.php'); // Plugins
+	// 	remove_menu_page('options-general.php'); // Settings
+	// 	remove_menu_page('tools.php'); // Tools
+	// 	remove_menu_page('post-new.php'); // Tools
+	// 	remove_menu_page('edit.php?post_type=acf-field-group'); // ACF
+	// 	remove_submenu_page( 'themes.php', 'themes.php' ); // Themes
+	// 	remove_submenu_page( 'index.php', 'update-core.php' ); // Wordpress Update
+	}
+}
+add_action( 'admin_menu', 'remove_main_menu_items' );

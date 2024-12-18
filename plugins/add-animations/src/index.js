@@ -189,8 +189,6 @@ const generateClassName = (attributes) => {
 		string += ` do--animation`;
 	}
 
-	console.log(string);
-
 	return string;
 };
 
