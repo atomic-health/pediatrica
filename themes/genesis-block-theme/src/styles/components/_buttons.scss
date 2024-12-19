@@ -384,10 +384,13 @@ $arrow-path: "M1.5 3.87676C1.19624 3.87676 0.95 4.123 0.95 4.42676C0.95 4.73051 
     }
 
     &.is-style-has-multicolor-outline {
+      --bg-rotation: 0turn;
+
       padding: toem(3px);
       border-radius: 9999px;
 
       background: conic-gradient(
+        from var(--bg-rotation),
         $suit-color--cyan 0% 20%,
         $suit-color--purple 20% 35%,
         $suit-color--yellow 35% 68%,
@@ -395,14 +398,33 @@ $arrow-path: "M1.5 3.87676C1.19624 3.87676 0.95 4.123 0.95 4.42676C0.95 4.73051 
         $suit-color--cyan 75% 100%
       ) !important;
 
+      &:hover {
+        animation: bg-rotation 2s ease forwards;
+      }
+
       .wp-block-button__link {
         padding-inline: toem(50px);
         font-size: 16px;
         color: var(--wp--preset--color--blue);
         background: var(--wp--preset--color--light-gray) !important;
+
+        &:hover {
+          font-weight: 700
+        }
       }
     }
   }
+}
+
+@keyframes bg-rotation {
+  from { --bg-rotation: 0turn; }
+  to { --bg-rotation: 1turn; }
+}
+
+@property --bg-rotation {
+  syntax: '<angle>';
+  initial-value: 0turn;
+  inherits: false
 }
 
 @include c-button();
