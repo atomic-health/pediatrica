@@ -1,0 +1,16 @@
+.c--icon-text {
+  margin: 0;
+  overflow: clip;
+  padding: 0;
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    max-height: 46px;
+    min-height: 46px;
+    max-width: 46px;
+    min-width: 46px;
+  }
+}

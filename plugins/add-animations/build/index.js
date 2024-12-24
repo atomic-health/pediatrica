@@ -10150,7 +10150,7 @@ const generateClassName = attributes => {
   }
   return string;
 };
-(0,_10up_block_components__WEBPACK_IMPORTED_MODULE_0__.registerBlockExtension)(["core/group", "core/column", "core/paragraph", "core/heading"], {
+(0,_10up_block_components__WEBPACK_IMPORTED_MODULE_0__.registerBlockExtension)(["core/group", "core/column", "core/paragraph", "core/heading", "core/post-title"], {
   extensionName: "animation-settings",
   attributes: additionalAttributes,
   classNameGenerator: generateClassName,

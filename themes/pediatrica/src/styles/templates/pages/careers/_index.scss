@@ -1,0 +1,37 @@
+@use "../../../utils" as *;
+
+.page--careers {
+  h2 + h3 {
+    text-wrap: unset;
+  }
+}
+
+.career__post {
+  .wp-block-column {
+    .wp-block-columns {
+      flex-direction: row !important;
+      justify-content: space-between;
+
+      @include respond-to('mobile-s') {
+        flex-direction: column !important;
+      }
+
+      .wp-block-column {
+        flex-basis: unset !important;
+        width: unset;
+
+        &:first-of-type {
+          @include respond-to('mobile-s') {
+            align-self: flex-start;
+          }
+        }
+      }
+    }
+  }
+}
+
+.careers__listing {
+  @include respond-to('tablet-v') {
+    padding: 0
+  }
+}

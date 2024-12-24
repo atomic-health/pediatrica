@@ -1,0 +1,31 @@
+@use "../../utils" as *;
+
+.cta__main {
+  background-image:
+    linear-gradient($suit-color--yellow, $suit-color--yellow),
+    linear-gradient($suit-color--cyan, $suit-color--cyan),
+    linear-gradient($suit-color--purple, $suit-color--purple);
+  background-size: 
+    15% 15px,
+    75% 15px,
+    100% 15px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+
+  @include respond-to('mobile-v') {
+    padding-inline: 20px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    @include respond-to('tablet-v') {
+      padding-inline: 10% !important;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+////
+/// Settings File
+/// Init fonts, backgrounds, wrappers, breakpoints and Transition variables
+/// @group Settings
+////
+
+/// Fonts ///
+///
+$suit-font-size: 18px !default;
+///
+$suit-font-weight: 400 !default;
+///
+$suit-font-family--primary:  'Museo Slab 500', sans-serif !default;
+///
+$suit-font-family--secondary: 'Proxima Nova', Helvetica, sans-serif !default;
+///
+$suit-font-family--tertiary: 'Neutraface Text', sans-serif !default;
+///
+$suit-font: $suit-font-weight $suit-font-size $suit-font-family--secondary !default;
+///
+$suit-font-weight-light: 300 !default;
+///
+$suit-font-weight-regular: $suit-font-weight !default;
+///
+$suit-font-weight-semibold: 600 !default;
+///
+$suit-font-weight-bold: 700 !default;
+
+/// Colors ///
+$colors: (cyan, blue, light-blue, gray, purple, yellow);
+///
+$suit-color--cyan: #00667C !default;
+///
+$suit-color--blue: #293F76 !default;
+///
+$suit-color--lightblue: #D9DEEF !default;
+///
+$suit-color--purple: #8B3B70 !default;
+///
+$suit-color--yellow: #EBA607 !default;
+///
+$suit-color--lightgray: #FCFAF2 !default;
+///
+$suit-color--gray: #F2F0E7 !default;
+///
+$suit-color--darkgray: #262626 !default;
+///
+$suit-color--default: #2D2F3B !default;
+
+
+/// Wrapper ///
+///
+$suit-wrapper-min-width: 1440px !default;
+
+/// Breakpoints ///
+///
+$suit-breakpoints: (
+  'desktop-fhd': (max-width: 1920px),
+  'desktop': (max-width: 1366px),
+  'ipad': (min-width: 1023px, max-width: 1024px),
+  'isdesktop': (min-width: 1024px),
+  'ismobile': (max-width: 1024px),
+  'iphone': (max-width: 980px),
+  'islandscape': (orientation: landscape, max-width: 1032px),
+  'isportrait': (orientation: portrait, max-width: 560px),
+  // sizes added by Lucio
+  'desktop-l': (max-width: 1420px),
+  'desktop-s': (max-width: 1280px),
+  'menu': (max-width: 1100px),
+  'tablet-h': (max-width: 1032px),
+  'tablet-v': (max-width: 781px),
+  'mobile-h': (max-width: 750px),
+  'mobile-v': (max-width: 560px),
+  'mobile-s': (max-width: 475px),
+  'leadership': (max-width: 350px)
+) !default;
+
+/// Transition/Animation ///
+///
+$suit-transition-duration: 0.25s !default;
+///
+$suit-transition-timing: ease !default;

@@ -1,0 +1,7 @@
+#adminmenuwrap #adminmenu #menu-posts-wpsl_stores .wp-menu-image, 
+.wpsl-thickbox {
+  &::before {
+    content: '\f231' !important;
+    font-family: dashicons !important;
+  }
+}

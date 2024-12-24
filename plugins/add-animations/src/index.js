@@ -196,7 +196,8 @@ registerBlockExtension( [
 	"core/group", 
 	"core/column",
 	"core/paragraph",
-	"core/heading"
+	"core/heading",
+	"core/post-title"
 ], {
 	extensionName: "animation-settings",
 	attributes: additionalAttributes,
