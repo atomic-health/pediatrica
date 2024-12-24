@@ -66,6 +66,10 @@
     .meta__icon {
       flex-basis: 32px;
     }
+
+    &.block__hours {
+      align-items: flex-start;
+    }
   }
 
   .post__content {

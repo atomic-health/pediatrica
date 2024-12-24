@@ -2,6 +2,7 @@
   $location_subeading =  get_post_meta( get_the_ID(), 'wpsl_subheading', true );
   $location_phone = get_post_meta( get_the_ID(), 'wpsl_phone', true );
   $location_email = get_post_meta( get_the_ID(), 'wpsl_email', true );
+  $location_hours = get_post_meta( get_the_ID(), 'wpsl_hours', true );
 ?>
 
 <article class="post__single">
@@ -54,6 +55,34 @@
               <p>
                 <a href="mailto:<?php echo $location_email; ?>" title="Write an email to <?php the_title(); ?>"><?php echo $location_email ?></a>
               </p>
+            </div>
+          <?php endif; ?>
+
+          <?php if ( $location_hours ) : ?>
+            <div class="meta__block block__hours">
+              <div class="meta__icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.0013 8.00008V16.0001L21.3346 18.6668M29.3346 16.0001C29.3346 23.3639 23.3651 29.3334 16.0013 29.3334C8.63751 29.3334 2.66797 23.3639 2.66797 16.0001C2.66797 8.63629 8.63751 2.66675 16.0013 2.66675C23.3651 2.66675 29.3346 8.63629 29.3346 16.0001Z" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <?php
+                  foreach( $location_hours as $day=>$hours ) :
+                    if( $hours ) {
+                      $hours = explode(',', $hours[0]);
+                      $from = $hours[0];
+                      $to = $hours[1];
+
+                      $hours_string = ' from ' . $from . ' to ' . $to;
+                    } else {
+                      $hours_string = ' - Closed';
+                    }
+                    
+                    //echo $hours[0];
+                ?>
+                  <p><?php echo ucfirst($day) . $hours_string; ?></p>
+                <?php endforeach; ?>
+              </div>
             </div>
           <?php endif; ?>
         </div>
