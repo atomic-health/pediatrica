@@ -34,6 +34,7 @@
       $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
       $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
       $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+      $attributes .= array_search( 'current-menu-item', $item->classes ) != 0 ? ' class="is--active"' : '';
 
       $item_output = $args->before;
 

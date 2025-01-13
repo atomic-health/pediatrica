@@ -9,7 +9,7 @@ function filter_newsroom_post_type_link($link, $post) {
 
   if ($cats = get_the_terms($post->ID, 'newsroom-type')) {
     if ( $cats[0]->slug == 'in-the-news' ) {
-      $link = get_field('external_link', $post->ID);
+      $link = get_field('external_link', $post->ID) ? get_field('external_link', $post->ID) : '';
     } else {
       $link = str_replace('%newsroom-type%', array_pop($cats)->slug, $link);
     }

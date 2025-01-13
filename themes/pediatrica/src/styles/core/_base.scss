@@ -44,23 +44,17 @@ html {
   overflow-x: hidden;
   interpolate-size: allow-keywords;
   scroll-behavior: smooth;
+  scroll-padding: 130px;
 }
 
 body {  
   font: $suit-font;
+  background-color: white;
   
 
   ::selection {
     background-color: #fffcb9;
   }
-
-  &.mobile-nav--open {
-    overflow-x: hidden;
-  }
-
-  // @include respond-to('mobile-h'){
-  //   font-size: 85%;
-  // }
 }
 
 p {
@@ -139,6 +133,13 @@ blockquote {
 
 figure {
   margin: 0;
+}
+
+iframe {
+  border: none;
+  width: 100%;
+  overflow: hidden !important;
+  height: 560px !important;
 }
 
 

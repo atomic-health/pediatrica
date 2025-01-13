@@ -292,6 +292,13 @@ function include_editor_assets() {
 		get_template_directory_uri() . '/js/block-variations.js',
 		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ) // loads dependencies
 	);
+
+	wp_enqueue_script( 
+		'fix-loops', 
+		get_template_directory_uri() . '/js/admin.js', 
+		['jquery'], 
+		null
+	);
 }
 add_action( 'enqueue_block_editor_assets', 'include_editor_assets' );
 
@@ -324,6 +331,7 @@ require get_template_directory() . '/inc/admin-columns/locations.php';
 require get_template_directory() . '/inc/post-types/locations.php';
 require get_template_directory() . '/inc/post-types/newsroom.php';
 require get_template_directory() . '/inc/post-types/leadership.php';
+require get_template_directory() . '/inc/post-types/events.php';
 
 
 /**
@@ -334,3 +342,4 @@ require get_template_directory() . '/inc/block-variants/query--blog-related-post
 require get_template_directory() . '/inc/block-variants/query--newsroom-related-posts.php';
 require get_template_directory() . '/inc/block-variants/query--newsroom-sticky-posts.php';
 require get_template_directory() . '/inc/block-variants/query--professionals.php';
+require get_template_directory() . '/inc/block-variants/query--events.php';

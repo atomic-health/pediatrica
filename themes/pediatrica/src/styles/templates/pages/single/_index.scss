@@ -81,8 +81,18 @@
     padding-inline: 20px;
   }
 
-  * {
-    color: $suit-color--darkgray;
+  // * {
+  //   color: $suit-color--darkgray;
+  // }
+
+  p,
+  ul,
+  ul li,
+  ol,
+  ol li {
+    a {
+      color: var(--wp--preset--color--purple)
+    }
   }
 }
 

@@ -177,20 +177,28 @@ const generateClassName = (attributes) => {
 		string += ' do--scale-down';
 	}
 
-	if( attributes.hasAnimation && attributes.animationDelay ) {
-		string += ` do--animation-delay-${attributes.animationDelay}`;
-	}
-
-	if( attributes.hasAnimation && attributes.animationDuration ) {
-		string += ` do--animation-duration-${attributes.animationDuration}`;
-	}
-
 	if( attributes.hasAnimation && !attributes.animationStart ) {
 		string += ` do--animation`;
 	}
 
 	return string;
 };
+
+const generateInlineStyles = (attributes) => {
+	let style = null;
+
+	if( attributes.hasAnimation && attributes.animationDelay ) {
+		//style += ` --do--animation-delay: ${attributes.animationDelay}`;
+		style = { ...style, '--animationDelay': `${attributes.animationDelay}ms` }
+	}
+
+	if( attributes.hasAnimation && attributes.animationDuration ) {
+		//style += ` do--animation-duration-${attributes.animationDuration}`;
+		style = { ...style, '--animationDuration': `${attributes.animationDuration}ms` }
+	}
+
+	return { ...style };
+}
 
 registerBlockExtension( [
 	"core/group", 
@@ -202,5 +210,6 @@ registerBlockExtension( [
 	extensionName: "animation-settings",
 	attributes: additionalAttributes,
 	classNameGenerator: generateClassName,
+	inlineStyleGenerator: generateInlineStyles,
 	Edit: BlockEdit,
 });

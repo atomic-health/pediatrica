@@ -1,0 +1,12 @@
+@use '../../../utils' as *;
+
+.page--about-us {
+  .page__header {
+    .wp-block-columns {
+      @include respond-to('iphone') {
+        flex-direction: column-reverse;
+        row-gap: 70px;
+      }
+    }
+  }
+}

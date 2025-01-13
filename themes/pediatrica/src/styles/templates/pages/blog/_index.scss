@@ -1,6 +1,7 @@
 @use "../../../utils" as *;  
 @use "../../../components/buttons" as *;
 @use "sass:color";
+@use "sass:math";
 
 .wp-block-post {
   padding: 25px;
@@ -114,6 +115,24 @@
   }
 }
 
+@mixin grid-center-last( $columns ) {
+	$total_columns: $columns * 2;
+	$span: math.div($total_columns, $columns);
+	$offset: $columns - 1;
+	$nth-child: if( $columns % 2 == 0, 'odd', 'even' );
+
+	display: grid;
+	grid-template-columns: repeat( $total_columns, 1fr );
+
+	& > * {
+		grid-column: span $span;
+
+		&:nth-last-child(#{$offset}):nth-child(#{$nth-child}) {
+			grid-column: $span / span $span;
+		}
+	}
+}
+
 .wp-block-post-template {
   li {
     opacity: 0;
@@ -151,25 +170,36 @@
     }
   }
 
-  // &.columns-3 {
-  //   grid-template-columns: repeat(6, 1fr);
+  &.columns-3 {
 
-  //   li {
-  //     grid-column: span 2;
+    // @include grid-center-last( 1 );
+    @include respond-to('iphoneup') {
+      grid-template-columns: repeat(6, 1fr);
 
-  //     /* Dealing with 2 orphan items */
-  //     &:last-child:nth-child(3n - 1) {
-  //       grid-column-end: -2;
-  //     }
-      
-  //     &:nth-last-child(2):nth-child(3n + 1) {
-  //       grid-column-end: 4;
-  //     }
+      li {
+        grid-column: span 2;
+        
+        /* Dealing with 2 orphan items */
+        &:last-child:nth-child(3n - 1) {
+          grid-column-end: -2;
+        }
+        
+        &:nth-last-child(2):nth-child(3n + 1) {
+          grid-column-end: 4;
+        }
 
-  //     /* Dealing with single orphan */
-  //     &:last-child:nth-child(3n - 2) {
-  //       grid-column-end: 5;
-  //     }
-  //   }
-  // }
+        /* Dealing with single orphan */
+        &:last-child:nth-child(3n - 2) {
+          grid-column-end: 5;
+        } 
+      }
+    }
+  }
 }
+
+.posts__loop {
+  .wp-post-image {
+    min-height: 210px;
+  }
+}
+

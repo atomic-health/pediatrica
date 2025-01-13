@@ -94,4 +94,24 @@ wp.domReady( () => {
 		scope: [ 'inserter' ],
 		}
 	);
+
+	registerBlockVariation(
+		'core/query',
+		{
+			title: '[Loop] Events',
+			name: '[Loop] Events',
+			attributes: {
+				namespace: 'events',
+				className: 'loop__events',
+				query: {
+						postType: 'tribe_events',
+						perPage: 3,
+						inherit: false,
+						isEvents: true
+				},
+		},
+		allowedControls: [ 'postType', 'author' ],
+		scope: [ 'inserter' ],
+		}
+	);
 } );

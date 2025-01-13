@@ -1,6 +1,7 @@
 @use "../../../utils" as *; 
 
 .home__hero {
+  position: relative;
   min-height: 770px;
   padding: 0;
 
@@ -27,6 +28,15 @@
     }
   }
 
+  .wp-block-cover__inner-container {
+    > h1,
+    > p,
+    > .wp-block-buttons {
+      position: relative;
+      z-index: 10;
+    }
+  }
+
   .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
     max-width: 1220px;
   }
@@ -40,6 +50,73 @@
       padding-bottom: 100px;
       padding-top: 140px;
     }
+  }
+
+  .safe-svg-cover {
+    position: absolute;
+    z-index: 0;
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: fade-in-move 1s ease forwards, float 2s 0s ease alternate infinite;
+
+    &.icon--brain,
+    &:has(.icon--brain) {
+      bottom: 65%;
+      left: calc((2160px - 1920px) + 42%);
+      animation-delay: .2s, 2s;
+    }
+
+    &.icon--shot,
+    &:has(.icon--shot) {
+      bottom: 28%;
+      left: 49%;
+      animation-delay: 0s, 1s;
+
+      svg {
+        max-width: 43px;
+        max-height: 43px;
+      }
+    }
+
+    &.icon--baby,
+    &:has(.icon--baby) {
+      bottom: 33%;
+      left: calc(82%);
+      animation-delay: .4s, 1.5s;
+
+      svg {
+        max-width: 55px;
+        max-height: 55px;
+      }
+
+      @include respond-to('header-icon') {
+        left: calc(50% + 470px);
+      }
+    }
+  }
+
+  .safe-svg-cover,
+  .safe-svg-inside {
+    display: grid;
+    place-items: center;
+    width: 85px !important;
+    height: 85px !important;
+    margin: 0;
+    border-radius: 9999px;
+
+    svg {
+      max-width: 45px;
+      max-height: 45px;
+    }
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(10px);
   }
 }
 

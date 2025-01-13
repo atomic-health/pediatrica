@@ -60,10 +60,11 @@ $suit-breakpoints: (
   'ipad': (min-width: 1023px, max-width: 1024px),
   'isdesktop': (min-width: 1024px),
   'ismobile': (max-width: 1024px),
+  'iphoneup': (min-width: 981px),
   'iphone': (max-width: 980px),
   'islandscape': (orientation: landscape, max-width: 1032px),
   'isportrait': (orientation: portrait, max-width: 560px),
-  // sizes added by Lucio
+  'header-icon': (max-width: 1500px),
   'desktop-l': (max-width: 1420px),
   'desktop-s': (max-width: 1280px),
   'menu': (max-width: 1100px),

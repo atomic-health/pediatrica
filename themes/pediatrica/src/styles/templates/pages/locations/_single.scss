@@ -9,16 +9,22 @@
     display: flex;
     gap: 100px;
     max-width: 1215px;
+
+    @include respond-to('iphone') {
+      flex-direction: column-reverse;
+      row-gap: 10px;
+    }
   }
 
   .location__map {
     flex-basis: 54%;
-    border-radius: 10px;
-    overflow: clip;
+    
 
     .wpsl-gmap-canvas {
-      margin: 0;
       height: 395px !important;
+      margin: 0;
+      overflow: clip;
+      border-radius: 10px;
     }
   }
 
@@ -38,6 +44,10 @@
       color: white;
       font-family: $suit-font-family--secondary;
       font-size: 28px;
+    }
+
+    @include respond-to('iphone') {
+      padding: 35px 20px 25px;
     }
   }
 

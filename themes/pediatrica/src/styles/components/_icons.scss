@@ -1,7 +1,11 @@
 .c--icon-text {
-  margin: 0;
   overflow: clip;
+  margin: 0;
   padding: 0;
+  
+  .wp-block-columns {
+    row-gap: 15px;
+  }
 
   .icon {
     display: grid;
@@ -12,5 +16,9 @@
     min-height: 46px;
     max-width: 46px;
     min-width: 46px;
+  }
+
+  .text {
+    text-align: center;
   }
 }

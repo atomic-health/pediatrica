@@ -31,41 +31,46 @@
 
 .do--fade-in {
   opacity: 0;
-  animation: fade-in-move 1s 0s ease forwards;
+  animation: fade-in-move 2s 0s ease forwards;
 }
 
 .do--fade-in-up {
   opacity: 0;
   transform: translateY(-50px);
-  animation: fade-in-move 1s 0s ease forwards;
+  animation: fade-in-move 2s 0s ease forwards;
 }
 
 .do--fade-in-down {
   opacity: 0;
   transform: translateY(50px);
-  animation: fade-in-move 1s 0s ease forwards;
+  animation: fade-in-move 2s 0s ease forwards;
 }
 
 .do--scale-up {
   opacity: 0;
   transform: scale(.9);
-  animation: scale 1s 0s ease forwards;
+  animation: scale 2s 0s ease forwards;
 }
 
 .do--scale-down {
   opacity: 0;
   transform: scale(1.1);
-  animation: scale 1s 0s ease forwards;
+  animation: scale 2s 0s ease forwards;
 }
 
-@for $i from 0 through 5000 {
-  @if $i % 100 == 0 {
-    .do--animation-delay-#{$i} { 
-      animation-delay: #{$i}ms
-    }
+// @for $i from 0 through 5000 {
+//   @if $i % 100 == 0 {
+//     .do--animation-delay-#{$i} { 
+//       animation-delay: #{$i}ms
+//     }
 
-    .do--animation-duration-#{$i} { 
-      animation-duration: #{$i}ms
-    }
-  }
+//     .do--animation-duration-#{$i} { 
+//       animation-duration: #{$i}ms
+//     }
+//   }
+// }
+
+.block--animation {
+  animation-duration: var(--animationDuration, 500ms) !important;
+  animation-delay: var(--animationDelay, 0ms) !important;
 }

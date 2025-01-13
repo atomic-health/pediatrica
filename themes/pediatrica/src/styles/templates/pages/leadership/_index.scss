@@ -9,3 +9,15 @@
     }
   }
 }
+
+.page--leadership {
+  .wp-block-query {
+    @include respond-to('iphone') {
+      .columns-3 {
+        li {
+          grid-column: span 4
+        }
+      }
+    }
+  }
+}
