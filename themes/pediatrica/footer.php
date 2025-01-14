@@ -10,7 +10,7 @@
 ?>
 <footer class="footer__main">
 	<div class="section-wrapper">
-		<a href="<?php echo get_home_url(); ?>" class="footer__logo">
+		<a href="<?php echo get_home_url('7'); ?>" class="footer__logo">
 			<svg width="208" height="68" viewBox="0 0 208 68" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" clip-rule="evenodd"
 					d="M29.1442 9.14104C23.6974 9.14104 19.2819 13.5565 19.2819 19.0033C19.2819 24.4501 23.6974 28.8656 29.1442 28.8656C34.591 28.8656 39.0065 24.4501 39.0065 19.0033C39.0065 13.5565 34.591 9.14104 29.1442 9.14104ZM16.2441 19.0033C16.2441 11.8788 22.0197 6.10327 29.1442 6.10327C36.2687 6.10327 42.0443 11.8788 42.0443 19.0033C42.0443 26.1278 36.2687 31.9034 29.1442 31.9034C22.0197 31.9034 16.2441 26.1278 16.2441 19.0033Z"
@@ -119,48 +119,6 @@
 						)
 					);
 				?>
-				<!-- <div>
-					<header>
-						<a href="">Services</a>
-					</header>
-					<a href="<?php echo get_home_url(); ?>/services#same-day-appointments">Same Day Appointments</a>
-					<a href="<?php echo get_home_url(); ?>/services#telemedicine">Telemedicine</a>
-					<a href="<?php echo get_home_url(); ?>/services#routine-wellness">Routine Wellness</a>
-					<a href="<?php echo get_home_url(); ?>/services#prevention-screening-and-early-detection">Prevention Screening & Early Detection</a>
-					<a href="<?php echo get_home_url(); ?>/services#chronic-disease-management">Chronic Disease Management</a>
-				</div>
-				<div>
-					<header>
-						<a href="">Patient Center</a>
-					</header>
-					<a href="">Patient Resources</a>
-				</div>
-				<div>
-					<header>
-						<a href="<?php echo get_home_url(); ?>/blog">Blog</a>
-					</header>
-					<a href="">Events</a>
-					<a href="">Patient Engagement Program</a>
-				</div>
-				<div>
-					<header>
-						<a href="">Locations</a>
-					</header>
-				</div>
-				<div>
-					<header>
-						<a href="<?php echo get_home_url(); ?>/about-us">About Us</a>
-					</header>
-					<a href="<?php echo get_home_url(); ?>/leadership">Leadership</a>
-					<a href="<?php echo get_home_url(); ?>/newsroom">News</a>
-				</div>
-				<div>
-					<header>
-						<a href="">Join Us</a>
-					</header>
-					<a href="<?php echo get_home_url(); ?>/be-a-pediatrica-provider">Be a Pediatrica Provider</a>
-					<a href="<?php echo get_home_url(); ?>/careers">Careers</a>
-				</div> -->
 			</nav>
 			<div class="footer__cta">
 				<header>
@@ -232,8 +190,8 @@
 			<div class="footer__terms">
 				<p>©Pediatrica 2024</p>
 				<p>All Right Reserved</p>
-				<a href="">Terms and Conditions</a>
-				<a href="<?php echo get_home_url(); ?>/privacy-policy" title="Read ourPrivacy Policy">Privacy Policy</a>
+				<a href="<?php echo get_home_url(); ?>/terms-and-conditions/">Terms and Conditions</a>
+				<a href="<?php echo get_home_url(); ?>/privacy-policy/" title="Read our Privacy Policy">Privacy Policy</a>
 			</div>
 		</div>
 	</div>

@@ -33,32 +33,33 @@
   p {
     margin: 0;
   }
+}
 
-  .wp-block-post-excerpt__more-link,
-  .wp-block-read-more {
-    display: flex; 
-    align-items: center;
-    font-family: $suit-font-family--primary;
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration: none;
-    color: $suit-color--blue !important;
-    box-shadow: none !important;
+.wp-block-post-excerpt__more-link,
+.wp-block-read-more {
+  display: flex; 
+  align-items: center;
+  font-family: $suit-font-family--primary;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none !important;
+  color: $suit-color--blue !important;
+  box-shadow: none !important;
 
+  &::after {
+    content: url("./images/arrow-right.svg"); 
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    transform: translateX(5px);
+    transition: all .25s ease;
+  }
+
+  &:hover {
     &::after {
-      content: url("./images/arrow-right.svg"); 
-      display: grid;
-      place-items: center;
-      width: 20px;
-      height: 20px;
-      transform: translateX(5px);
-      transition: all .25s ease;
-    }
-
-    &:hover {
-      &::after {
-        transform: translateX(8px);
-      }
+      transform: translateX(8px);
+      
     }
   }
 }
@@ -169,29 +170,35 @@
       }
     }
   }
+}
 
-  &.columns-3 {
+.wp-block-query {
+  &:not(.loop__events) {
+    .wp-block-post-template {
+      &.columns-3 {
 
-    // @include grid-center-last( 1 );
-    @include respond-to('iphoneup') {
-      grid-template-columns: repeat(6, 1fr);
-
-      li {
-        grid-column: span 2;
-        
-        /* Dealing with 2 orphan items */
-        &:last-child:nth-child(3n - 1) {
-          grid-column-end: -2;
+        // @include grid-center-last( 1 );
+        @include respond-to('iphoneup') {
+          grid-template-columns: repeat(6, 1fr);
+    
+          li {
+            grid-column: span 2;
+            
+            /* Dealing with 2 orphan items */
+            &:last-child:nth-child(3n - 1) {
+              grid-column-end: -2;
+            }
+            
+            &:nth-last-child(2):nth-child(3n + 1) {
+              grid-column-end: 4;
+            }
+    
+            /* Dealing with single orphan */
+            &:last-child:nth-child(3n - 2) {
+              grid-column-end: 5;
+            } 
+          }
         }
-        
-        &:nth-last-child(2):nth-child(3n + 1) {
-          grid-column-end: 4;
-        }
-
-        /* Dealing with single orphan */
-        &:last-child:nth-child(3n - 2) {
-          grid-column-end: 5;
-        } 
       }
     }
   }

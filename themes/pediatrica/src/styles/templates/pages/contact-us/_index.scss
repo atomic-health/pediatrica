@@ -1,0 +1,19 @@
+@use "../../../utils" as *;
+
+.page--contact-us,
+.page--book-a-consult {
+  .page__header {
+    .wp-block-columns {
+      @include respond-to('tablet-v') {
+        flex-direction: column-reverse;
+        row-gap: 50px;
+
+        figure {
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

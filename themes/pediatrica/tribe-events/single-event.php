@@ -95,6 +95,9 @@ $cost  = tribe_get_formatted_cost( $event_id );
 						<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow"
 							style="flex-basis:49%">
 							<figure class="wp-block-post-featured-image">
+								<div class="event__date">
+									<div><?php echo event_get_date( get_the_ID() ); ?></div>
+								</div>
 								<?php echo get_the_post_thumbnail( get_the_ID(), 'full' ); ?>
 							</figure>
 						</div>
@@ -107,31 +110,60 @@ $cost  = tribe_get_formatted_cost( $event_id );
 
 							<h2 style="font-size:36px;line-height:1.4;" class="wp-block-post-title">
 								<?php the_title(); ?>
-								
 							</h2>
 
+							<div class="event__meta">
+								<?php
+									$event_location = event_get_location( get_the_ID() );
+
+									if( $event_location ) :
+								?>
+									<div class="event__location">
+										<div><?php echo $event_location; ?></div>
+									</div>
+								<?php endif; ?>
+
+								<div class="event__time">
+									<?php echo event_get_time( get_the_ID() ); ?>
+								</div>
+							</div>
+							
+							<?php
+								$event_link = get_post_meta( get_the_ID(), '_EventURL' );
+
+								if( $event_link && !empty( $event_link[0] ) ) :
+							?>
 							<div class="wp-block-post-excerpt">
 								<p class="wp-block-post-excerpt__more-text">
-									<a class="wp-block-post-excerpt__more-link" href="https://pediatrica.local/blog/laudantium-quibusdam-veniam-aut/">
+									<a class="wp-block-post-excerpt__more-link" target="_blank" title="Go to event reservation page" href="<?php echo $event_link[0]; ?>">
 										RSVP
 									</a>
 								</p>
 							</div>
+							<?php endif; ?>
 						</div>
 					</div>
 
 				</li>
 			</ul>
 		</div>
-
-		<?php the_content(); ?>
+		
+		<div class="event__detail">
+			<?php 
+				if( !empty( get_the_content() ) ) :
+			?>
+				<header class="event__detail-header">
+					<h2>Details</h2>
+				</header>
+				<?php the_content(); ?>
+			<?php endif; ?>
+		</div>
 
 		<hr>
 
-		<!-- Event meta -->
-		<!-- <?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
+		<?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
 		<?php tribe_get_template_part( 'modules/meta' ); ?>
-		<?php do_action( 'tribe_events_single_event_after_the_meta' ) ?> -->
+		<?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
 	</main>
 </article>
 
