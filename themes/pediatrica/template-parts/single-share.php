@@ -1,5 +1,5 @@
 <div class="post__share">
-  <a href="" class="share__icon">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo get_the_permalink(); ?>" title="Share this article on Facebook" target="_blank" class="share__icon">
     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="44" height="44" rx="22" fill="#8B3B70" />
       <path
@@ -7,7 +7,7 @@
         fill="white" />
     </svg>
   </a>
-  <a href="" class="share__icon">
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_the_permalink(); ?>" title="Share this article on LinkedIn" target="_blank" class="share__icon">
     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="44" height="44" rx="22" fill="#8B3B70" />
       <path
@@ -19,7 +19,7 @@
         fill="white" />
     </svg>
   </a>
-  <a href="" class="share__icon">
+  <!-- <a href="" class="share__icon">
     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="44" height="44" rx="22" fill="#8B3B70" />
       <g clip-path="url(#clip0_524_43575)">
@@ -48,5 +48,5 @@
         d="M14 22V30C14 30.5304 14.2107 31.0391 14.5858 31.4142C14.9609 31.7893 15.4696 32 16 32H28C28.5304 32 29.0391 31.7893 29.4142 31.4142C29.7893 31.0391 30 30.5304 30 30V22M26 16L22 12M22 12L18 16M22 12V25"
         stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
-  </a>
+  </a> -->
 </div>

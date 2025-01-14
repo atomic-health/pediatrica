@@ -104,6 +104,19 @@
   @include respond-to('mobile-v') {
     gap: 10px;
   }
+
+  a {
+    rect {
+      opacity: 1;
+      transition: all .25s;
+    }
+  
+    &:hover {
+      rect {
+        opacity: .8;
+      }
+    }
+  }
 }
 
 .post__related {
@@ -145,9 +158,13 @@
   }
 
   .post__thumbnail {
-    max-width: 115px;
-    border-radius: 0;
+    max-width: 100%;
+    border-radius: 10px;
     margin: 0 0 50px 0;
+  }
+
+  img {
+    border-radius: 10px;
   }
 }
 

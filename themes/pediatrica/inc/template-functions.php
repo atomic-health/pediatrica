@@ -162,3 +162,33 @@ function remove_main_menu_items(){
 	}
 }
 add_action( 'admin_menu', 'remove_main_menu_items' );
+
+
+/**
+ * Redirect tag, category, date and author pages to 404
+ */
+function redirect_tag_disabler(){
+	if(is_tag() || is_category() || is_date() || is_author())    {
+		global $wp_query;
+		$wp_query->set_404();
+	}
+}
+add_action('template_redirect', 'redirect_tag_disabler');
+
+
+/**
+ * Set default img for OG image tag if thumbnail is not present.
+ */
+function add_image_to_opengraph_tags( $image_container ) {
+	global $post;
+
+	$post_id = $post->ID;
+
+	if( !has_post_thumbnail( $post_id ) ) {
+			$image_id = 1304; // Default OG image
+			$image_container->add_image_by_id( $image_id );
+	} else {
+			return;
+	}
+}
+add_filter( 'wpseo_add_opengraph_images', 'add_image_to_opengraph_tags' );

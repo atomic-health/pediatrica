@@ -135,7 +135,7 @@
 
 		<div class="footer__sub-nav">
 			<div class="footer__social-media">
-				<a href="">
+				<a href="https://www.facebook.com/pediatricahealth" title="Go to Facebook" target="_blank">
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g clip-path="url(#clip0_2119_366)">
 							<path
@@ -150,7 +150,7 @@
 					</svg>
 
 				</a>
-				<a href="">
+				<a href="https://www.linkedin.com/company/pediatrica-health" title="Go to LinkedIn" target="_blank">
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g clip-path="url(#clip0_2119_368)">
 							<path
@@ -165,7 +165,7 @@
 					</svg>
 
 				</a>
-				<a href="">
+				<a href="https://www.instagram.com/pediatricahealth/" title="Go to Instagram" target="_blank">
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g clip-path="url(#clip0_2119_362)">
 							<path

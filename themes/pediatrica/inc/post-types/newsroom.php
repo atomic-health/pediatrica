@@ -44,3 +44,33 @@ function add_blank_target_to_newsroom_excerpt_link( $block_content, $block ) {
   }	
 }
 add_filter( 'render_block_core/post-excerpt', 'add_blank_target_to_newsroom_excerpt_link', 10, 2 );
+
+
+/**
+ * Exclude external link posts from sitemap.xml.
+ */
+function exclude_newsroom_posts_from_xml_sitemaps() {
+  $exclude = [];
+  $args = array(
+    'post_type' => 'newsroom',
+    'posts_per_page' => -1,
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'newsroom-type',
+        'field' => 'slug',
+        'terms' => array('in-the-news')
+      )
+    )
+  );
+
+  $query = new WP_Query( $args );
+  
+  if( !empty( $query->posts ) ) {
+    foreach( $query->posts as $post ) {
+      $exclude[] = $post->ID;
+    }
+  }
+
+  return $exclude;
+}
+add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', 'exclude_newsroom_posts_from_xml_sitemaps' );
