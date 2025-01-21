@@ -13,7 +13,7 @@
   }
 
   to {
-    margin-top: 40px;
+    margin-top: var(--padding-top);
     opacity: 1;
   }
 }
@@ -31,12 +31,14 @@
   }
 
   > div {
+    --padding-top: 24px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1280px;
-    margin: 40px auto 0;
+    margin: var(--padding-top) auto 0;
     padding: 10px 30px;
     border-radius: 9999px;
     background-color: white;
@@ -47,6 +49,10 @@
 
     @include respond-to('desktop-s') {
       padding-inline: 20px;
+    }
+
+    @include respond-to('tablet-v') {
+    --padding-top: 16px;
     }
   }
 
@@ -112,6 +118,10 @@
 
   .wp-block-button__link {
     margin-left: 15px;
+
+    @include respond-to('menu') {
+      margin-left: 0;
+    }
   }
 }
 
@@ -193,10 +203,11 @@
     position: fixed;
     z-index: -10;
     inset: 0;
-    background-color: rgba(white, .95);
+    background-color: rgba(white, .92);
     visibility: hidden;
     opacity: 0;
     transition: visibility $suit-transition-duration 0s, opacity $suit-transition-duration $suit-transition-timing;
+    backdrop-filter: blur(15px);
   }
 
   .do--menu {
@@ -261,7 +272,7 @@
         gap: 20px;
         position: absolute;
         left: 50%;
-        top: 200px;
+        top: 140px;
         transform: translateX(-50%);
         opacity: 1;
         transition: all .25s ease;
@@ -273,6 +284,12 @@
     
       .wp-block-button {
         font-size: 100%;
+        width: 100%;
+
+        a {
+          width: 100%;
+          justify-content: center;
+        }
 
         &:first-of-type {
           margin-top: 30px;

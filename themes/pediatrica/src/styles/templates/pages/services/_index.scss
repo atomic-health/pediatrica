@@ -2,8 +2,6 @@
 
 #telemedicine {
   .wp-block-columns {
-    padding-top: 50px; 
-
     @include respond-to('iphone') {
       flex-direction: column-reverse;
     }

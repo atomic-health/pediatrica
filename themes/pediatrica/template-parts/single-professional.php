@@ -25,7 +25,7 @@
             </div>
             <div class="meta__data">
               <header>Locations</header>
-              <?php get_location_address(get_field('location'), true); ?>
+              <?php get_location_names(get_field('location'), true); ?>
             </div>
           </div>
 

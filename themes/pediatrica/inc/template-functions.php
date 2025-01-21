@@ -192,3 +192,37 @@ function add_image_to_opengraph_tags( $image_container ) {
 	}
 }
 add_filter( 'wpseo_add_opengraph_images', 'add_image_to_opengraph_tags' );
+
+
+/**
+ * Admin menu custom order
+ */
+function atomic_custom_menu_order( $menu_ord ) {
+	if ( !$menu_ord ) return true;
+	
+	return array(
+		'index.php',
+		'separator1', 
+		'edit.php?post_type=page',
+		'edit.php', 
+		'edit.php?post_type=newsroom',
+		'edit.php?post_type=leadership', 
+		'edit.php?post_type=wpsl_stores',
+		'edit.php?post_type=professional',
+		'edit.php?post_type=tribe_events',
+		'upload.php',
+		'separator2',
+		'themes.php',
+		'plugins.php',
+		'users.php',
+		'tools.php',
+		'options-general.php',
+		'separator3',
+		'edit.php?post_type=acf-field-group',
+		'admin.php?page=cookie-law-info',
+		'admin.php?page=wpseo_dashboard'
+
+	);
+}
+add_filter( 'custom_menu_order', 'atomic_custom_menu_order', 10, 1 );
+add_filter( 'menu_order', 'atomic_custom_menu_order', 10, 1 );

@@ -156,3 +156,25 @@ function get_location_address($locations, $return_link = false) {
 		echo '</p>';
 	}
 }
+
+
+/**
+ * Print the location names with links.
+ */
+function get_location_names($locations, $return_link = false) {
+	if ( !is_array($locations) || empty($locations) ) {
+		return "There's no location with this name";
+	}
+
+	foreach ($locations as $location) {
+		//var_dump($location);
+		$location_id = $location->ID;
+		$location_name = $location->post_title;
+
+		echo '<p>';
+		echo ($return_link) ? '<a href="' . get_the_permalink( $location_id ) . '" title="See ' . $location_name . '">' : '';
+		echo $location->post_title;
+		echo ($return_link) ? '</a>' : '';
+		echo '</p>';
+	}
+}
