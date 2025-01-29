@@ -11,6 +11,8 @@
 }
 
 .page--leadership {
+  background: url(images/bg--leadership.svg) center 300px no-repeat;
+
   .wp-block-query {
     @include respond-to('iphone') {
       .columns-3 {

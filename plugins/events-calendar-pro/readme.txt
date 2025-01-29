@@ -3,7 +3,7 @@
 Contributors: theeventscalendar, borkweb, bordoni, brianjessee, aguseo, camwynsp, GeoffBel, jentheo, leahkoerper, lucatume, neillmcshea, vicskf, zbtirrell, juanfra
 Tags: events, calendar, event, venue, organizer, dates, date, google maps, conference, workshop, concert, meeting, seminar, summit, class, the events calendar, widget, pro
 Donate link: https://evnt.is/29
-Stable tag: 7.3.1
+Stable tag: 7.3.2
 Requires at least: 6.5
 Tested up to: 6.7.1
 Requires PHP: 7.4
@@ -213,6 +213,15 @@ Previous versions of Events Calendar Pro are not cross-compatible with 6.X add-o
 Remember to always make a backup of your database and files before updating!
 
 == Changelog ==
+
+= [7.3.2] 2025-01-22 =
+
+* Feature - Adding Display setting option to allow forcing the Photo View to show images in a Grid, at a 16:9 aspect ratio. [TEC-5320]
+* Fix - A notice will now show when deleting your YouTube Live Channel ID within the integration settings. [ECP-1838]
+* Fix - Correct some a11y markup on the venues list. [ECP-1880]
+* Fix - Redirects no longer error when editing and updating recurring events. [ECP-1878]
+* Fix - Updated recurring events setting label for clarity.
+* Language - 2 new strings added, 27 updated, 1 fuzzied, and 0 obsoleted.
 
 = [7.3.1] 2024-12-17 =
 

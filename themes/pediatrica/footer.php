@@ -124,11 +124,17 @@
 				<header>
 					<h3>See what Pediatrica can do for you</h3>
 				</header>
-				<div class="wp-block-button is-style-outline">
+				<!-- <div class="wp-block-button is-style-outline">
 					<a class="wp-block-button__link wp-element-button" href="https://health.healow.com/rpcj" title="Go to the Patient Portal" target="_blank">Patient Portal</a>
 				</div>
 				<div class="wp-block-button is-style-has-rounded-arrow">
 					<a class="wp-block-button__link has-blue-background-color has-background wp-element-button" href="https://health.healow.com/rpcj" target="_blank" title="Schedule a visit">Schedule a Visit</a>
+				</div> -->
+				<div class="wp-block-button is-style-outline">
+					<a class="wp-block-button__link wp-element-button" href="<?php echo get_home_url( '/' ); ?>/coming-soon/" title="Go to the Patient Portal">Patient Portal</a>
+				</div>
+				<div class="wp-block-button is-style-has-rounded-arrow">
+					<a class="wp-block-button__link has-blue-background-color has-background wp-element-button" href="<?php echo get_home_url( '/' ); ?>/coming-soon/" title="Schedule a visit">Schedule a Visit</a>
 				</div>
 			</div>
 		</div>

@@ -1,27 +1,82 @@
 @use "../../../utils" as *;
 
-#telemedicine {
-  .wp-block-columns {
-    @include respond-to('iphone') {
-      flex-direction: column-reverse;
-    }
-  }
-}
+// #telemedicine {
+//   .wp-block-columns {
+//     @include respond-to('iphone') {
+//       flex-direction: column-reverse;
+//     }
+//   }
+// }
 
-#routine-wellness {
-  .wp-block-columns {
-    @include respond-to('ismobile') {
-      flex-direction: column;
-      padding-top: 50px; 
-    }
-  }
-}
+// #routine-wellness {
+//   .wp-block-columns {
+//     @include respond-to('ismobile') {
+//       flex-direction: column;
+//       padding-top: 50px; 
+//     }
+//   }
+// }
 
-#same-day-appointments,
-#chronic-disease-management {
-  .wp-block-columns {
-    @include respond-to('iphone') {
-      flex-direction: column-reverse;
+// #same-day-appointments,
+// #chronic-disease-management {
+//   .wp-block-columns {
+//     @include respond-to('iphone') {
+//       flex-direction: column-reverse;
+//     }
+//   }
+// }
+
+.page--services {
+  section {
+    &.wp-block-group {
+      @include respond-to('ismobile') {
+        .wp-block-image {
+          text-align: center;
+        }
+      }
+
+      @include respond-to('iphone') {
+        .wp-block-columns {
+          flex-direction: column;
+        }
+      }
+
+      &#behavioral-health,
+      &#research-and-education,
+      &#newborn-and-infant-wellness {
+        @include respond-to('iphone') {
+          .wp-block-columns {
+            flex-direction: column-reverse;
+          }
+        }
+      }
+
+      &#prevention-screening-and-early-detection,
+      &#chronic-disease-management,
+      &#behavioral-health,
+      &#research-and-education {
+        .wp-block-column:has(.wp-block-image) {
+          @include respond-to('iphone') {
+            margin-bottom: 30px;
+          }
+        }
+      }
+
+      &#routine-wellness {
+        .wp-block-column:not(:has(.wp-block-image)) {
+          @include respond-to('iphone') {
+            padding-top: 80px !important;
+          }
+        }
+      }
+      
+      &#newborn-and-infant-wellness {
+        .wp-block-column:not(:has(.wp-block-image)) {
+          @include respond-to('iphone') {
+            padding-top: 40px !important;
+          }
+        }
+      }
     }
   }
 }

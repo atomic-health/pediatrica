@@ -1,12 +1,48 @@
 @use '../../../utils' as *;
 
+// .page--about-us {
+//   .page__header {
+//     .wp-block-columns {
+//       @include respond-to('iphone') {
+//         flex-direction: column-reverse;
+//         row-gap: 70px;
+//       }
+//     }
+//   }
+// }
+
 .page--about-us {
-  .page__header {
-    .wp-block-columns {
+  section {
+    &.wp-block-group {
       @include respond-to('iphone') {
-        flex-direction: column-reverse;
-        row-gap: 70px;
+        .wp-block-image {
+          text-align: center;
+        }
       }
+    }
+
+    &:not(:last-of-type) {
+      @include respond-to('iphone') {
+        .wp-block-columns {
+          flex-direction: column-reverse;
+        }
+      } 
+    }
+
+    &:not(:nth-of-type(2)) {
+      @include respond-to('iphone') {
+        .wp-block-column:has(.wp-block-image) {
+          margin-bottom: 30px;
+        }
+      } 
+    }
+
+    &:last-of-type {
+      @include respond-to('iphone') {
+        .wp-block-columns {
+          flex-direction: column;
+        }
+      } 
     }
   }
 }

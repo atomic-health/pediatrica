@@ -86,17 +86,21 @@
   }
 
   a:not(.wp-block-button__link) {
+    position: relative;
     padding-inline: 20px;
     color: $suit-color--blue;
     font-size: toem(16px);
+    line-height: 230%;
 
     @include respond-to('desktop-s') {
       padding-inline: 15px;
       font-size: toem(15px);
+      width: 100%;
+      display: block;
+      text-align: center;
     }
 
-    &:hover,
-    &.is--active {
+    &:hover {
       text-decoration: underline;
       text-underline-offset: 5px
     }
@@ -106,6 +110,104 @@
 
       @include respond-to('desktop-s') {
         padding-right: 15px;
+      }
+    }
+  }
+
+  .current_page_item {
+    text-decoration: underline;
+    text-underline-offset: 5px
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    margin-left: -5px;
+    padding: 14px;
+    border-radius: 6px;
+    background-color: #F3F6FE;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition-property: display transform opacity;
+    transition-duration: .25s;
+    transition-timing-function: ease;
+    transition-behavior: allow-discrete;
+
+    @include respond-to('desktop-s') {
+      position: unset;
+    }
+
+    @starting-style { 
+      display: none;
+      opacity: 0; 
+      transform: translateY(-10px);
+    }
+
+    .dropdown-item {
+      padding: 11px 12px;
+      border-radius: 12px;
+      line-height: unset;
+      text-decoration: none !important;
+
+      &:hover {
+        color: white;
+        background-color: #2B5695;
+      }
+
+      &:not(:last-of-type) {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .menu-item:not(.dropdown) {
+    &:hover {
+      a {
+        text-decoration: underline;
+        text-underline-offset: 5px
+      }
+    }
+  }  
+
+  .menu-item {
+    &.dropdown {
+      &:hover {
+        > a {
+          @include respond-to('desktop-s') {
+            pointer-events: none;
+          }
+
+          &::after {
+            transform: rotate(.5turn);
+          }
+        }
+      }
+      > a {
+        text-decoration: none !important;
+
+        &::after {
+          content: '';
+          position: relative;
+          top: 4px;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          background: url(images/chevron-down.svg) center no-repeat;
+          margin-left: 4px;
+          transition: transform .25s ease;
+        }
+      }
+    }
+  }
+
+  .menu-item-has-children {
+    &:hover,
+    &:focus-within {
+      .dropdown-menu {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
       }
     }
   }
@@ -189,6 +291,10 @@
     font-size: toem(44px);
   }
 
+  h2 {
+    text-wrap: unset;
+  }
+
   :where(.wp-block-group.wp-block-group-is-layout-constrained) {
     @include respond-to('mobile-v') {
       padding: 0;
@@ -225,6 +331,7 @@
   
     a {
       padding: 0 !important;
+      line-height: unset;
   
       $menu--open: "M5.2 17.2h21.6c0.662 0 1.2-0.538 1.2-1.2s-0.538-1.2-1.2-1.2h-21.6c-0.662 0-1.2 0.538-1.2 1.2s0.538 1.2 1.2 1.2zM5.2 10h21.6c0.662 0 1.2-0.538 1.2-1.2s-0.538-1.2-1.2-1.2h-21.6c-0.662 0-1.2 0.538-1.2 1.2s0.538 1.2 1.2 1.2zM5.2 24.4h21.6c0.662 0 1.2-0.538 1.2-1.2s-0.538-1.2-1.2-1.2h-21.6c-0.662 0-1.2 0.538-1.2 1.2s0.538 1.2 1.2 1.2z";
       $menu--close: "M9.293 10.707l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l5.293-5.293 5.293 5.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-5.293-5.293 5.293-5.293c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z";

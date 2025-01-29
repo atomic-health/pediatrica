@@ -74,11 +74,17 @@
 						);
 					?>
 
-					<div class="wp-block-button is-style-outline">
+					<!-- <div class="wp-block-button is-style-outline">
 						<a href="https://health.healow.com/rpcj" title="Go to the Patient Portal" class="wp-block-button__link has-blue-background-color wp-element-button" target="_blank">Patient Portal</a>
 					</div>
 					<div class="wp-block-button is-style-has-rounded-arrow">
 						<a href="https://health.healow.com/rpcj" title="Schedule a Visit" class="wp-block-button__link has-blue-background-color has-background wp-element-button" target="_blank">Schedule a Visit</a>
+					</div> -->
+					<div class="wp-block-button is-style-outline">
+						<a href="<?php echo get_home_url( '/' ); ?>/coming-soon/" title="Go to the Patient Portal" class="wp-block-button__link has-blue-background-color wp-element-button">Patient Portal</a>
+					</div>
+					<div class="wp-block-button is-style-has-rounded-arrow">
+						<a href="<?php echo get_home_url( '/' ); ?>/coming-soon/" title="Schedule a Visit" class="wp-block-button__link has-blue-background-color has-background wp-element-button">Schedule a Visit</a>
 					</div>
 				</div>
 
