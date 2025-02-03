@@ -332,6 +332,7 @@ require get_template_directory() . '/inc/post-types/locations.php';
 require get_template_directory() . '/inc/post-types/newsroom.php';
 require get_template_directory() . '/inc/post-types/leadership.php';
 require get_template_directory() . '/inc/post-types/events.php';
+require get_template_directory() . '/inc/post-types/blog.php';
 
 
 /**

@@ -1,6 +1,7 @@
 @use "../../../utils" as *;
 
-.page--privacy-policy {
+.page--privacy-policy,
+.page--terms-and-conditions {
   section {
     h2,
     h3,

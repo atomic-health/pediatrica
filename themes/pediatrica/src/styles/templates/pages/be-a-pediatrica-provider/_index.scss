@@ -6,33 +6,28 @@
     transform-origin: 50%;
   }
 
-  .block {
+  .bg {
+    opacity: 0;
+    animation: fade-in-move .35s 0s ease forwards;
+  }
+
+  .outline {
+    scale: 0;
+    animation: fade-in-move .65s .1s ease-in-out forwards;
+  }
+
+  .bubble {
     opacity: 0;
     animation: fade-in-move .35s .45s ease forwards;
 
     @for $i from 8 through 1 {
       &:nth-of-type(#{$i}) {
-        animation-delay: #{calc(($i * .09) + .5)}s;
+        animation-delay: #{calc(($i * .09) + .55)}s;
       }
     }
   }
   
-  .border {
-    scale: .7;
-    animation: fade-in-move .35s .55s ease forwards;
-  }
-
-  .arrows {
-    animation: fade-in-move .35s .45s ease forwards;
-
-    &--top {
-      transform: translateY(50px);
-    }
-
-    &--bottom {
-      transform: translateY(-50px);
-    }
-  }
+  
 
   .frame {
     text {

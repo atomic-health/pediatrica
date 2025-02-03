@@ -1,280 +1,327 @@
-@use "../../../utils" as *; 
+@use "../../../utils" as *;
+
+// to keep menu from stretching off due to .home__why purple bg
+.home {
+	overflow: hidden;
+}
+
+// keep width of cover paragraph from shrinking at 1920+
+.cover--desktop {
+	.wp-block-cover__inner-container {
+		& > p {
+			@media only screen and (min-width: 1921px) {
+				padding-right: 860px;
+			}
+		}
+	}
+}
+
+// Toggle between cover background images on mobile and desktop
+.cover--mobile {
+	display: none;
+	margin-block-start: 0;
+}
+
+@media screen and (max-width: 580px) {
+	.cover--mobile {
+		display: block;
+	}
+	.cover--desktop {
+		display: none;
+	}
+	.home__hero .safe-svg-cover {
+		visibility: hidden;
+	}
+}
 
 .home__hero {
-  position: relative;
-  min-height: 770px;
-  padding: 0;
+	position: relative;
+	min-height: 770px;
+	padding: 0;
 
-  > .wp-block-cover {
-    max-width: unset;
-    min-height: 770px;
-  }
+	> .wp-block-cover {
+		max-width: unset;
+		min-height: 770px;
+	}
 
-  h1 {
-    font-size: 74px;
+	h1 {
+		font-size: 74px;
 
-    @include respond-to('tablet-v') {
-      font-size: 54px !important;
-    }
+		@include respond-to("tablet-v") {
+			font-size: 54px !important;
+		}
 
-    + p {
-      margin-block: 40px;
-      padding-right: 45vw;
-      line-height: 1.7;
+		+ p {
+			margin-block: 40px;
+			padding-right: 45vw;
+			line-height: 1.7;
 
-      @include respond-to('tablet-v') {
-        padding-right: 0;
-      }
-    }
-  }
+			@include respond-to("tablet-v") {
+				padding-right: 0;
+			}
+		}
+	}
 
-  .wp-block-cover__inner-container {
-    > h1,
-    > p,
-    > .wp-block-buttons {
-      position: relative;
-      z-index: 10;
-    }
-  }
+	.wp-block-cover__inner-container {
+		> h1,
+		> p,
+		> .wp-block-buttons {
+			position: relative;
+			z-index: 10;
+		}
+	}
 
-  .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-    max-width: 1220px;
-  }
+	.is-layout-constrained
+		> :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+		max-width: 1220px;
+	}
 
-  .wp-block-cover, 
-  .wp-block-cover-image {
-    padding: 40px;
+	.wp-block-cover,
+	.wp-block-cover-image {
+		padding: 40px;
 
-    @include respond-to('tablet-v') {
-      padding: 30px;
-      padding-bottom: 100px;
-      padding-top: 140px;
-    }
-  }
+		@include respond-to("tablet-v") {
+			padding: 30px;
+			padding-bottom: 100px;
+			padding-top: 140px;
+		}
+	}
 
-  .safe-svg-cover {
-    position: absolute;
-    z-index: 0;
-    transform: translateY(-20px);
-    opacity: 0;
-    animation: fade-in-move 1s ease forwards, float 2s 0s ease alternate infinite;
+	.safe-svg-cover {
+		position: absolute;
+		z-index: 0;
+		transform: translateY(-20px);
+		opacity: 0;
+		animation: fade-in-move 1s ease forwards,
+			float 2s 0s ease alternate infinite;
 
-    &.icon--brain,
-    &:has(.icon--brain) {
-      bottom: 65%;
-      left: calc((2160px - 1920px) + 42%);
-      animation-delay: .2s, 2s;
-    }
+		&.icon--brain,
+		&:has(.icon--brain) {
+			bottom: 65%;
+			left: calc((2160px - 1920px) + 42%);
+			animation-delay: 0.2s, 2s;
+		}
 
-    &.icon--shot,
-    &:has(.icon--shot) {
-      bottom: 28%;
-      left: 49%;
-      animation-delay: 0s, 1s;
+		&.icon--shot,
+		&:has(.icon--shot) {
+			bottom: 28%;
+			left: 49%;
+			animation-delay: 0s, 1s;
 
-      svg {
-        max-width: 43px;
-        max-height: 43px;
-      }
-    }
+			svg {
+				max-width: 43px;
+				max-height: 43px;
+			}
+		}
 
-    &.icon--baby,
-    &:has(.icon--baby) {
-      bottom: 33%;
-      left: calc(82%);
-      animation-delay: .4s, 1.5s;
+		&.icon--baby,
+		&:has(.icon--baby) {
+			bottom: 33%;
+			left: calc(82%);
+			animation-delay: 0.4s, 1.5s;
 
-      svg {
-        max-width: 55px;
-        max-height: 55px;
-      }
+			svg {
+				max-width: 55px;
+				max-height: 55px;
+			}
 
-      @include respond-to('header-icon') {
-        left: calc(50% + 470px);
-      }
-    }
-  }
+			@include respond-to("header-icon") {
+				left: calc(50% + 470px);
+			}
+		}
+	}
 
-  .safe-svg-cover,
-  .safe-svg-inside {
-    display: grid;
-    place-items: center;
-    width: 85px !important;
-    height: 85px !important;
-    margin: 0;
-    border-radius: 9999px;
+	.safe-svg-cover,
+	.safe-svg-inside {
+		display: grid;
+		place-items: center;
+		width: 85px !important;
+		height: 85px !important;
+		margin: 0;
+		border-radius: 9999px;
 
-    svg {
-      max-width: 45px;
-      max-height: 45px;
-    }
-  }
+		svg {
+			max-width: 45px;
+			max-height: 45px;
+		}
+	}
 }
 
 @keyframes float {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(10px);
-  }
+	from {
+		transform: translateY(0px);
+	}
+	to {
+		transform: translateY(10px);
+	}
 }
 
-
-
 .home__welcome {
-  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(242,240,231,1) 30%, rgba(242,240,231,1) 100%);
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 30%,
+		rgba(242, 240, 231, 1) 30%,
+		rgba(242, 240, 231, 1) 100%
+	);
 
-  &.section-wrapper {
-    max-width: unset;
-  }
+	&.section-wrapper {
+		max-width: unset;
+	}
 
-  .wrapper {
-    transform: translateY(-60px);
-    background: linear-gradient(0deg,rgb(240,238,229) 0%,rgb(245,243,234) 70%, rgb(245,243,234) 70%, #f2f0e7 100%) !important;
-  }
+	.wrapper {
+		transform: translateY(-60px);
+		background: linear-gradient(
+			0deg,
+			rgb(240, 238, 229) 0%,
+			rgb(245, 243, 234) 70%,
+			rgb(245, 243, 234) 70%,
+			#f2f0e7 100%
+		) !important;
+	}
 
-  .icons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: baseline;
-    column-gap: 50px;
-    row-gap: 30px;
-    max-width: 990px;
-    margin: 0 auto;
-  }
+	.icons {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: baseline;
+		column-gap: 50px;
+		row-gap: 30px;
+		max-width: 990px;
+		margin: 0 auto;
+	}
 
-  .c--icon-text {
-    margin: 0 !important;
-  }
+	.c--icon-text {
+		margin: 0 !important;
+	}
 
-  .wrapper {
-    > p {
-      text-wrap: balance;
-  
-      @include respond-to('mobile-v') {
-        padding: 40px !important;
-        font-size: 19px !important;
-      }
-    }
-  }
+	.wrapper {
+		> p {
+			text-wrap: balance;
+
+			@include respond-to("mobile-v") {
+				padding: 40px !important;
+				font-size: 19px !important;
+			}
+		}
+	}
 }
 
 .home__columns {
-  @include respond-to('iphone') {
-    flex-direction: column;
+	@include respond-to("iphone") {
+		flex-direction: column;
 
-    .safe-svg-cover .safe-svg-inside {
-      max-width: 25%;
-      height: unset !important;
-    }
-  }
+		.safe-svg-cover .safe-svg-inside {
+			max-width: 25%;
+			height: unset !important;
+		}
+	}
 }
 
 .home__difference {
-  hr {
-    width: 100% !important;
-    height: 3px !important;
-  }
+	hr {
+		width: 100% !important;
+		height: 3px !important;
+	}
 
-  .wp-block-group,
-  .wp-block-columns {
-    @include respond-to('ismobile') {
-      gap: 40px !important;
-      padding-inline: 0 !important;
-    }
-  }
+	.wp-block-group,
+	.wp-block-columns {
+		@include respond-to("ismobile") {
+			gap: 40px !important;
+			padding-inline: 0 !important;
+		}
+	}
 }
 
 .home__services {
-  .wp-block-column {
-    ///
-    --c-color-1: #{$suit-color--purple};
-    ///
-    --c-color-1-width: 45%;
-    ///
-    --c-color-2: #{$suit-color--blue};
+	.wp-block-column {
+		///
+		--c-color-1: #{$suit-color--purple};
+		///
+		--c-color-1-width: 45%;
+		///
+		--c-color-2: #{$suit-color--blue};
 
-    max-width: 381px;
-    background-position: bottom left;
-    background-repeat: no-repeat;
-    background-image:
-      linear-gradient(var(--c-color-1), var(--c-color-1)),
-      linear-gradient(var(--c-color-2), var(--c-color-2));
-    background-size: 
-      var(--c-color-1-width) 11px,
-      100% 11px;
-  }
+		max-width: 381px;
+		background-position: bottom left;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(var(--c-color-1), var(--c-color-1)),
+			linear-gradient(var(--c-color-2), var(--c-color-2));
+		background-size: var(--c-color-1-width) 11px, 100% 11px;
+	}
 
-  p {
-    @include respond-to('mobile-v') {
-      font-size: 18px !important;
-    }
-  }
+	p {
+		word-break: keep-all;
 
-  .wp-block-group {
-    @include respond-to('mobile-v') {
-      padding: 0 !important;
-    }
-  }
+		@include respond-to('desktop-s') {
+			font-size: 120% !important;
+		}
 
-  .safe-svg-cover .safe-svg-inside {
-    @include respond-to('mobile-v') {
-      max-width: 30%;
-    }
-  }
+		@include respond-to("mobile-v") {
+			font-size: 18px !important;
+		}
+	}
 
-  .wp-block-columns {
-    justify-content: center;
+	.wp-block-group {
+		@include respond-to("mobile-v") {
+			padding: 0 !important;
+		}
+	}
 
-    &:nth-of-type(1) {
-      .wp-block-column {
-        &:nth-of-type(1) {
-          --c-color-1: #{$suit-color--purple};
-          --c-color-1-width: 45%;
-          --c-color-2: #{$suit-color--blue};
-        }
-    
-        &:nth-of-type(2) {
-          --c-color-1: #{$suit-color--yellow};
-          --c-color-1-width: 70%;
-          --c-color-2: #{$suit-color--blue};
-        }
-    
-        &:nth-of-type(3) {
-          --c-color-1: #{$suit-color--purple};
-          --c-color-1-width: 35%;
-          --c-color-2: #{$suit-color--cyan};
-        }
-      }
-    }
+	.safe-svg-cover .safe-svg-inside {
+		@include respond-to("mobile-v") {
+			max-width: 30%;
+		}
+	}
 
-    &:nth-of-type(2) {
-      .wp-block-column {
-        &:nth-of-type(1) {
-          --c-color-1: #{$suit-color--yellow};
-          --c-color-1-width: 35%;
-          --c-color-2: #{$suit-color--purple};
-        }
-    
-        &:nth-of-type(2) {
-          --c-color-1: #{$suit-color--cyan};
-          --c-color-1-width: 35%;
-          --c-color-2: #{$suit-color--blue};
-        }
-      }
-    }
-  }
+	.wp-block-columns {
+		justify-content: center;
+
+		&:nth-of-type(1) {
+			.wp-block-column {
+				&:nth-of-type(1) {
+					--c-color-1: #{$suit-color--purple};
+					--c-color-1-width: 45%;
+					--c-color-2: #{$suit-color--blue};
+				}
+
+				&:nth-of-type(2) {
+					--c-color-1: #{$suit-color--yellow};
+					--c-color-1-width: 70%;
+					--c-color-2: #{$suit-color--blue};
+				}
+
+				&:nth-of-type(3) {
+					--c-color-1: #{$suit-color--purple};
+					--c-color-1-width: 35%;
+					--c-color-2: #{$suit-color--cyan};
+				}
+			}
+		}
+
+		&:nth-of-type(2) {
+			.wp-block-column {
+				&:nth-of-type(1) {
+					--c-color-1: #{$suit-color--yellow};
+					--c-color-1-width: 35%;
+					--c-color-2: #{$suit-color--purple};
+				}
+
+				&:nth-of-type(2) {
+					--c-color-1: #{$suit-color--cyan};
+					--c-color-1-width: 35%;
+					--c-color-2: #{$suit-color--blue};
+				}
+			}
+		}
+	}
 }
-
-
 
 // :root {
 // @each $color in $colors {
-  
+
 //     --#{$color}: #{$color};
-  
+
 // }
 // }
 
@@ -287,7 +334,6 @@
 //       --bg: var(--wp--preset--color--#{$color});
 //     }
 //   }
-  
 
 //   .background {
 //     content: "";
@@ -300,102 +346,113 @@
 //     border-radius: 50%;
 //     transform: translate(-50%, -50%);
 //     background-color: var(--bg);
-    
+
 //   }
 // }
 
 .editor-styles-wrapper {
-  .home__why {  
-    .content {
-      width: 100%;
-      max-width: 1100px !important;
-    }
-  }
+	.home__why {
+		.content {
+			width: 100%;
+			max-width: 1100px !important;
+		}
+	}
 }
 
 .home__why {
-  position: relative;
-  width: 120vw;
-  max-width: unset !important;
-  left: 50%;
-  padding: 15% 0 20%;
-  transform: translateX(-50%);
+	position: relative;
+	width: 120vw;
+	max-width: unset !important;
+	left: 50%;
+	padding: 15% 0 20%;
+	transform: translateX(-50%);
 
-  @include respond-to('ismobile') {
-    width: 180vw;
-  }
+	@include respond-to("ismobile") {
+		width: 180vw;
+	}
 
-  @include respond-to('tablet-v') {
-    width: 230vw;
-  }
+	@include respond-to("tablet-v") {
+		width: 230vw;
+	}
 
-  .content {
-    //width: 100%;
-    //max-width: 75%;
-    width: min(1215px, 60%);
+	.content {
+		//width: 100%;
+		//max-width: 75%;
+		width: min(1215px, 60%);
 
-    @include respond-to('ismobile') {
-      width: min(855px, 60%);
-    }
+		@include respond-to("ismobile") {
+			width: min(855px, 60%);
+		}
 
-    @include respond-to('tablet-v') {
-      width: min(405px, 60%);
-    }
+		@include respond-to("tablet-v") {
+			width: min(405px, 60%);
+		}
 
-    @include respond-to('mobile-v') {
-      width: min(325px, 60%);
+		@include respond-to("mobile-v") {
+			width: min(325px, 60%);
 
-      .safe-svg-cover .safe-svg-inside {
-        max-width: 20%;
-      }
-    }
-  }
+			.safe-svg-cover .safe-svg-inside {
+				max-width: 20%;
+			}
+		}
 
-  p {
-    text-wrap: balance;
+		.wp-block-column {
+			padding-left: clamp(15px, 2vw, 40px) !important;
+			padding-right: clamp(15px, 2vw, 40px) !important;
+		}
+	}
 
-    @include respond-to('mobile-v') {
-      font-size: 18px !important;
-    }
-  }
+	p {
+		text-wrap: balance;
+		min-width: min-content;
+		word-break: keep-all;
+
+		@include respond-to('desktop-s') {
+			font-size: 120% !important;
+		}
+
+		@include respond-to("mobile-v") {
+			font-size: 18px !important;
+		}
+	}
 }
 
 .home__locations {
-  @include respond-to('mobile-v') {
-    padding-inline: 10px !important;
-  }
+	@include respond-to("mobile-v") {
+		padding-inline: 10px !important;
+	}
 
-  h3,
-  p {
-    text-wrap: balance;
-  }
+	h3,
+	p {
+		text-wrap: balance;
+	}
 
-  .wp-block-cover {
-    @include respond-to('tablet-v') {
-      padding-top: 55vw !important;
-    }
+	.wp-block-cover {
+		@include respond-to("tablet-v") {
+			padding-top: 55vw !important;
+		}
 
-    .wp-block-cover__image-background {
-      max-width: 60%;
+		.wp-block-cover__image-background {
+			max-width: 60%;
 
-      @include respond-to('tablet-v') {
-        max-width: 100%;
-        max-height: 450px;
-      }
-    }
+			@include respond-to("tablet-v") {
+				max-width: 100%;
+				max-height: 450px;
+			}
+		}
 
-    .wp-block-cover__inner-container {
-      .wp-block-group {
-        @include respond-to('tablet-v') {
-          max-width: 100%;
-        }
+		.wp-block-cover__inner-container {
+			.wp-block-group {
+				@include respond-to("tablet-v") {
+					max-width: 100%;
+				}
 
-        .wp-block-group {
-          @include respond-to('tablet-v') {
-            padding: 40px !important;
-          }
-        }
-      }
-    }
-  }
+				.wp-block-group {
+					@include respond-to("tablet-v") {
+						padding: 40px !important;
+					}
+				}
+			}
+		}
+	}
 }

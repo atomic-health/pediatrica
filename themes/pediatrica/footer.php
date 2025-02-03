@@ -194,9 +194,9 @@
 				</a>
 			</div>
 			<div class="footer__terms">
-				<p>©Pediatrica 2024</p>
+				<p>©Pediatrica <?php echo date('Y'); ?></p>
 				<p>All Right Reserved</p>
-				<a href="<?php echo get_home_url(); ?>/terms-and-conditions/">Terms and Conditions</a>
+				<!-- <a href="<?php echo get_home_url(); ?>/terms-and-conditions/">Terms and Conditions</a> -->
 				<a href="<?php echo get_home_url(); ?>/privacy-policy/" title="Read our Privacy Policy">Privacy Policy</a>
 			</div>
 		</div>

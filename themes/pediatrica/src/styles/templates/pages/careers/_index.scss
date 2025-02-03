@@ -17,8 +17,8 @@
       }
 
       .wp-block-column {
-        flex-basis: unset !important;
-        width: unset;
+        // flex-basis: unset !important;
+        // width: unset;
 
         &:first-of-type {
           @include respond-to('mobile-s') {

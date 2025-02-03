@@ -182,6 +182,8 @@ add_action('template_redirect', 'redirect_tag_disabler');
 function add_image_to_opengraph_tags( $image_container ) {
 	global $post;
 
+	if( !$post ) return;
+
 	$post_id = $post->ID;
 
 	if( !has_post_thumbnail( $post_id ) ) {
